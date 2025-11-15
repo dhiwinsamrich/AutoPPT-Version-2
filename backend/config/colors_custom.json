@@ -1,0 +1,91 @@
+{
+    "description": "Custom color configurations for specific placeholders",
+    "enabled": false,
+    "placeholders": {
+        "projectName": {
+            "custom_color": "#ffffff",
+            "fallback_color": "#ffffff",
+            "bold": true,
+            "italic": false
+        },
+        "companyName": {
+            "custom_color": "#ffffff",
+            "fallback_color": "#ffffff",
+            "bold": true,
+            "italic": false
+        },
+        "s_r_1": {
+            "custom_color": "#ffffff",
+            "fallback_color": "#ffffff",
+            "bold": true,
+            "italic": false
+        },
+        "s_r_2": {
+            "custom_color": "#ffffff",
+            "fallback_color": "#ffffff",
+            "bold": true,
+            "italic": false
+        },
+        "s_r_3": {
+            "custom_color": "#ffffff",
+            "fallback_color": "#ffffff",
+            "bold": true,
+            "italic": false
+        },
+        "sr_desc_1": {
+            "custom_color": "#2d3047",
+            "fallback_color": "#2d3047",
+            "bold": false,
+            "italic": false
+        },
+        "sr_desc_2": {
+            "custom_color": "#2d3047",
+            "fallback_color": "#2d3047",
+            "bold": false,
+            "italic": false
+        },
+        "sr_desc_3": {
+            "custom_color": "#2d3047",
+            "fallback_color": "#2d3047",
+            "bold": false,
+            "italic": false
+        },
+        "p_r_1": {
+            "custom_color": "#ffffff",
+            "fallback_color": "#ffffff",
+            "bold": true,
+            "italic": false
+        },
+        "p_r_2": {
+            "custom_color": "#ffffff",
+            "fallback_color": "#ffffff",
+            "bold": true,
+            "italic": false
+        },
+        "p_r_3": {
+            "custom_color": "#ffffff",
+            "fallback_color": "#ffffff",
+            "bold": true,
+            "italic": false
+        },
+        "pr_desc_1": {
+            "custom_color": "#2d3047",
+            "fallback_color": "#2d3047",
+            "bold": false,
+            "italic": false
+        },
+        "pr_desc_2": {
+            "custom_color": "#2d3047",
+            "fallback_color": "#2d3047",
+            "bold": false,
+            "italic": false
+        },
+        "pr_desc_3": {
+            "custom_color": "#2d3047",
+            "fallback_color": "#2d3047",
+            "bold": false,
+            "italic": false
+        }
+    }
+}
+

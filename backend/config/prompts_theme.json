@@ -1,0 +1,7 @@
+{
+    "prompts": {
+        "company_theme": "Analyze the company name '{company_name}' and generate a comprehensive brand theme. Consider the literal meaning, industry associations, and brand characteristics. For example: 'Woodland' should use green and brown colors (nature theme), 'Ocean' should use blue colors (water theme), 'Fire' should use red/orange colors (energy theme). Generate appropriate colors that match the company name's meaning and industry. Include: industry classification, brand personality, target audience, primary color, secondary color, accent color, text color, and typography preferences. Create a professional, cohesive theme suitable for corporate presentations.",
+        "logo_analysis": "Analyze the company logo for {company_name} and extract brand colors, personality traits, and visual characteristics. Use this information to generate a complementary color theme and typography that maintains brand consistency while ensuring professional presentation aesthetics."
+    }
+}
+

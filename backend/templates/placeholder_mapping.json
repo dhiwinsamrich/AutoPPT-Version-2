@@ -1,0 +1,2146 @@
+{
+  "placeholder_mappings": {
+    "backgroundImage": {
+      "type": "BACKGROUND",
+      "description": "Background overlay trigger - creates themed overlay on slide",
+      "content_requirements": {
+        "overlay_alpha": 0.3,
+        "overlay_color": "primary_theme",
+        "visual_style": "minimalistic, gradient-blend, professional, project-themed"
+      },
+      "auto_fill": {
+        "create_overlay": true,
+        "use_theme_color": true
+      }
+    },
+    "image_1": {
+      "type": "IMAGE",
+      "description": "Main hero image - professional and relevant to project",
+      "content_requirements": {
+        "aspect_ratio": "4:3",
+        "quality": "ultra-high",
+        "style": "professional, cinematic, modern, project-specific, conceptual",
+        "lighting": "soft, balanced, context-appropriate"
+      },
+      "auto_fill": {
+        "search_query": "{project_name} concept visual professional presentation",
+        "fallback_url": "DEFAULT_IMAGE_URL"
+      }
+    },
+    "image_2": {
+      "type": "IMAGE",
+      "description": "Secondary supporting image - charts, diagrams, or process visuals",
+      "content_requirements": {
+        "aspect_ratio": "12.5:4.17",
+        "quality": "high",
+        "style": "professional, data-focused, clean, modern, project-specific"
+      },
+      "auto_fill": {
+        "search_query": "{project_name} data visualization process diagram professional",
+        "fallback_url": "DEFAULT_IMAGE_URL"
+      }
+    },
+    "logo": {
+      "type": "IMAGE",
+      "description": "Company logo or brand mark",
+      "content_requirements": {
+        "aspect_ratio": "1:1",
+        "quality": "high",
+        "style": "logo, brand, professional, clean"
+      },
+      "auto_fill": {
+        "search_query": "{company_name} logo brand mark",
+        "fallback_url": "DEFAULT_IMAGE_URL"
+      }
+    },
+    "chart_1": {
+      "type": "IMAGE",
+      "description": "Data chart or infographic",
+      "content_requirements": {
+        "aspect_ratio": "4:3",
+        "quality": "high",
+        "style": "chart, data, professional, infographic, project-specific"
+      },
+      "auto_fill": {
+        "search_query": "{project_name} metrics chart data visualization professional",
+        "fallback_url": "DEFAULT_IMAGE_URL"
+      }
+    },
+    "companyLogo": {
+      "type": "IMAGE",
+      "description": "Company logo - professional brand mark for corporate identity",
+      "content_requirements": {
+        "aspect_ratio": "1:1",
+        "quality": "ultra-high",
+        "style": "logo, brand, professional, clean, modern, corporate",
+        "lighting": "clean, balanced"
+      },
+      "auto_fill": {
+        "search_query": "{company_name} logo brand mark corporate identity",
+        "fallback_url": "DEFAULT_IMAGE_URL"
+      }
+    },
+    "proposalName": {
+      "type": "SUBTITLE",
+      "description": "Type of proposal - indicates document purpose",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 5,
+        "style": "formal, descriptive, executive-level"
+      },
+      "auto_fill": {
+        "use_company_name": false,
+        "suffix": "",
+        "prefix": "",
+        "default_value": "Project Proposal"
+      }
+    },
+    "projectName": {
+      "type": "TITLE",
+      "description": "Main project title - prominent and eye-catching",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "concise, impactful, professional, visionary"
+      },
+      "auto_fill": {
+        "use_company_name": true,
+        "suffix": "Project",
+        "prefix": ""
+      }
+    },
+    "companyName": {
+      "type": "SUBTITLE",
+      "description": "Company name - professional and clearly visible",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 4,
+        "style": "professional, brand-consistent, minimal, bold"
+      },
+      "auto_fill": {
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "projectOverview": {
+      "type": "PARAGRAPH",
+      "description": "Project overview paragraph - comprehensive description of the project",
+      "content_requirements": {
+        "min_words": 50,
+        "max_words": 60,
+        "style": "professional, comprehensive, engaging, executive-level"
+      },
+      "auto_fill": {
+        "use_company_name": true,
+        "use_project_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "image_3": {
+      "type": "IMAGE",
+      "description": "Third supporting image - additional project visuals or diagrams",
+      "content_requirements": {
+        "aspect_ratio": "16:9",
+        "quality": "high",
+        "style": "professional, minimal, modern, project-specific, supporting"
+      },
+      "auto_fill": {
+        "search_query": "{project_name} technology workflow architecture professional minimal",
+        "fallback_url": "DEFAULT_IMAGE_URL"
+      }
+    },
+    "property1": {
+      "type": "BULLET",
+      "description": "First project property - 2-3 word key feature description",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 3,
+        "style": "concise, impactful, professional, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "property2": {
+      "type": "BULLET",
+      "description": "Second project property - 2-3 word key feature description",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 3,
+        "style": "concise, impactful, professional, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "property3": {
+      "type": "BULLET",
+      "description": "Third project property - 2-3 word key feature description",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 3,
+        "style": "concise, impactful, professional, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "project": {
+      "type": "LABEL",
+      "description": "Project text label - displays the word 'Project'",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "bold, primary color, label"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "overview": {
+      "type": "LABEL",
+      "description": "Overview text label - displays the word 'Overview'",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "bold, secondary color, label"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "color1": {
+      "type": "COLOR",
+      "description": "Primary color element - displays primary theme color",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "primary color, theme-based"
+      },
+      "auto_fill": {
+        "use_theme_color": true,
+        "theme_color_key": "primary_color",
+        "display_type": "color_swatch"
+      }
+    },
+    "color2": {
+      "type": "COLOR",
+      "description": "Secondary color element - displays secondary theme color",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "secondary color, theme-based"
+      },
+      "auto_fill": {
+        "use_theme_color": true,
+        "theme_color_key": "secondary_color",
+        "display_type": "color_swatch"
+      }
+    },
+    "logo_1": {
+      "type": "EMOJI",
+      "description": "Emoji logo that matches the heading - contextual emoji representation",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "emoji, contextual, professional"
+      },
+      "auto_fill": {
+        "use_contextual_emoji": true,
+        "match_heading": true,
+        "fallback_emoji": "🚀"
+      }
+    },
+    "Heading_1": {
+      "type": "TITLE",
+      "description": "Main heading that defines the aspect - primary topic or focus area",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 5,
+        "style": "bold, primary color, impactful, defining"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "Head1_para": {
+      "type": "PARAGRAPH",
+      "description": "Explanation paragraph for Heading_1 - detailed description of the main aspect",
+      "content_requirements": {
+        "min_words": 15,
+        "max_words": 20,
+        "style": "explanatory, detailed, professional, supporting"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "explain_heading": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "\"": {
+      "type": "SYMBOL",
+      "description": "Quote symbol - decorative quotation mark in primary theme color",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "decorative, primary color, bold, large"
+      },
+      "auto_fill": {
+        "use_theme_color": true,
+        "theme_color_key": "primary_color",
+        "display_type": "symbol",
+        "default_value": "\""
+      }
+    },
+    "“": {
+      "type": "SYMBOL",
+      "description": "Curly quote symbol - decorative curly quotation mark in primary theme color",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "decorative, primary color, bold, large"
+      },
+      "auto_fill": {
+        "use_theme_color": true,
+        "theme_color_key": "primary_color",
+        "display_type": "symbol",
+        "default_value": "“"
+      }
+    },
+    "Project Goal": {
+      "type": "LABEL",
+      "description": "Project Goal label - displays 'Project Goal'",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 2,
+        "style": "bold, primary color, label, prominent"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "suffix": "",
+        "prefix": "",
+        "default_value": "Project Goal"
+      }
+    },
+    "logo2": {
+      "type": "EMOJI",
+      "description": "Second emoji logo - contextual emoji representation for second section",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "emoji, contextual, professional"
+      },
+      "auto_fill": {
+        "use_contextual_emoji": true,
+        "match_heading": true,
+        "fallback_emoji": "📊"
+      }
+    },
+    "logo3": {
+      "type": "EMOJI",
+      "description": "Third emoji logo - contextual emoji representation for third section",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "emoji, contextual, professional"
+      },
+      "auto_fill": {
+        "use_contextual_emoji": true,
+        "match_heading": true,
+        "fallback_emoji": "🎯"
+      }
+    },
+    "logo4": {
+      "type": "EMOJI",
+      "description": "Fourth emoji logo - contextual emoji representation for fourth section",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "emoji, contextual, professional"
+      },
+      "auto_fill": {
+        "use_contextual_emoji": true,
+        "match_heading": true,
+        "fallback_emoji": "💡"
+      }
+    },
+    "logo5": {
+      "type": "EMOJI",
+      "description": "Fifth emoji logo - contextual emoji representation for fifth section",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "emoji, contextual, professional"
+      },
+      "auto_fill": {
+        "use_contextual_emoji": true,
+        "match_heading": true,
+        "fallback_emoji": "⚡"
+      }
+    },
+    "logo6": {
+      "type": "EMOJI",
+      "description": "Sixth emoji logo - contextual emoji representation for sixth section",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "emoji, contextual, professional"
+      },
+      "auto_fill": {
+        "use_contextual_emoji": true,
+        "match_heading": true,
+        "fallback_emoji": "🚀"
+      }
+    },
+    "Heading_2": {
+      "type": "TITLE",
+      "description": "Second heading - defines the second aspect or topic",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 5,
+        "style": "bold, primary color, impactful, defining"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "Heading_3": {
+      "type": "TITLE",
+      "description": "Third heading - defines the third aspect or topic",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 5,
+        "style": "bold, primary color, impactful, defining"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "Heading_4": {
+      "type": "TITLE",
+      "description": "Fourth heading - defines the fourth aspect or topic",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 5,
+        "style": "bold, primary color, impactful, defining"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "Heading_5": {
+      "type": "TITLE",
+      "description": "Fifth heading - defines the fifth aspect or topic",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 5,
+        "style": "bold, primary color, impactful, defining"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "Heading_6": {
+      "type": "TITLE",
+      "description": "Sixth heading - defines the sixth aspect or topic",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 5,
+        "style": "bold, primary color, impactful, defining"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "Head2_para": {
+      "type": "PARAGRAPH",
+      "description": "Explanation paragraph for Heading_2 - detailed description of the second aspect",
+      "content_requirements": {
+        "min_words": 15,
+        "max_words": 20,
+        "style": "explanatory, detailed, professional, supporting"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "explain_heading": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "Head3_para": {
+      "type": "PARAGRAPH",
+      "description": "Explanation paragraph for Heading_3 - detailed description of the third aspect",
+      "content_requirements": {
+        "min_words": 15,
+        "max_words": 20,
+        "style": "explanatory, detailed, professional, supporting"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "explain_heading": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "Head4_para": {
+      "type": "PARAGRAPH",
+      "description": "Explanation paragraph for Heading_4 - detailed description of the fourth aspect",
+      "content_requirements": {
+        "min_words": 15,
+        "max_words": 20,
+        "style": "explanatory, detailed, professional, supporting"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "explain_heading": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "Head5_para": {
+      "type": "PARAGRAPH",
+      "description": "Explanation paragraph for Heading_5 - detailed description of the fifth aspect",
+      "content_requirements": {
+        "min_words": 15,
+        "max_words": 20,
+        "style": "explanatory, detailed, professional, supporting"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "explain_heading": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "Head6_para": {
+      "type": "PARAGRAPH",
+      "description": "Explanation paragraph for Heading_6 - detailed description of the sixth aspect",
+      "content_requirements": {
+        "min_words": 15,
+        "max_words": 20,
+        "style": "explanatory, detailed, professional, supporting"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "explain_heading": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "Project\nGoals": {
+      "type": "LABEL",
+      "description": "Project Goals label - displays 'Project Goals' text in primary theme color",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 2,
+        "style": "bold, primary color, label, prominent"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "suffix": "",
+        "prefix": "",
+        "default_value": "Project Goals"
+      }
+    },
+    "logo_2": {
+      "type": "EMOJI",
+      "description": "Second emoji logo - contextual emoji representation for second section",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "emoji, contextual, professional"
+      },
+      "auto_fill": {
+        "use_contextual_emoji": true,
+        "match_heading": true,
+        "fallback_emoji": "📊"
+      }
+    },
+    "logo_3": {
+      "type": "EMOJI",
+      "description": "Third emoji logo - contextual emoji representation for third section",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "emoji, contextual, professional"
+      },
+      "auto_fill": {
+        "use_contextual_emoji": true,
+        "match_heading": true,
+        "fallback_emoji": "🎯"
+      }
+    },
+    "logo_4": {
+      "type": "EMOJI",
+      "description": "Fourth emoji logo - contextual emoji representation for fourth section",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "emoji, contextual, professional"
+      },
+      "auto_fill": {
+        "use_contextual_emoji": true,
+        "match_heading": true,
+        "fallback_emoji": "💡"
+      }
+    },
+    "logo_5": {
+      "type": "EMOJI",
+      "description": "Fifth emoji logo - contextual emoji representation for fifth section",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "emoji, contextual, professional"
+      },
+      "auto_fill": {
+        "use_contextual_emoji": true,
+        "match_heading": true,
+        "fallback_emoji": "⚡"
+      }
+    },
+    "logo_6": {
+      "type": "EMOJI",
+      "description": "Sixth emoji logo - contextual emoji representation for sixth section",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "emoji, contextual, professional"
+      },
+      "auto_fill": {
+        "use_contextual_emoji": true,
+        "match_heading": true,
+        "fallback_emoji": "🚀"
+      }
+    },
+    "comprehensive_design_job": {
+      "type": "LABEL",
+      "description": "Section title - displays 'Comprehensive design job' in primary theme color",
+      "content_requirements": {
+        "min_words": 3,
+        "max_words": 3,
+        "style": "bold, primary color, professional label"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "suffix": "",
+        "prefix": "",
+        "default_value": "Comprehensive design job"
+      }
+    },
+    "scope_of_project": {
+      "type": "LABEL",
+      "description": "Section title - displays 'Scope of the project' in primary theme color",
+      "content_requirements": {
+        "min_words": 4,
+        "max_words": 4,
+        "style": "bold, primary color, professional label"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "suffix": "",
+        "prefix": "",
+        "default_value": "Scope of the project"
+      }
+    },
+    "scope_desc": {
+      "type": "PARAGRAPH",
+      "description": "Project scope description - comprehensive overview of features and functionality",
+      "content_requirements": {
+        "min_words": 50,
+        "max_words": 80,
+        "style": "professional, comprehensive, detailed"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "circle_1": {
+      "type": "COLOR",
+      "description": "Primary color element for circle shape - displays primary theme color",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "primary color, theme-based"
+      },
+      "auto_fill": {
+        "use_theme_color": true,
+        "theme_color_key": "primary_color",
+        "display_type": "color_swatch"
+      }
+    },
+    "side_Heading_1": {
+      "type": "TITLE",
+      "description": "title placeholder for side_Heading_1",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "points_1": {
+      "type": "BULLET",
+      "description": "Bullet points for points_1 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_1": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_1 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "circle_2": {
+      "type": "COLOR",
+      "description": "Secondary color element for circle shape - displays secondary theme color",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "secondary color, theme-based"
+      },
+      "auto_fill": {
+        "use_theme_color": true,
+        "theme_color_key": "secondary_color",
+        "display_type": "color_swatch"
+      }
+    },
+    "scope_img_2": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_2 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "side_Heading_2": {
+      "type": "TITLE",
+      "description": "title placeholder for side_Heading_2",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "points_2": {
+      "type": "BULLET",
+      "description": "Bullet points for points_2 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "side_Heading_3": {
+      "type": "TITLE",
+      "description": "title placeholder for side_Heading_3",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "points_3": {
+      "type": "BULLET",
+      "description": "Bullet points for points_3 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_3": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_3 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "side_Heading_4": {
+      "type": "TITLE",
+      "description": "title placeholder for side_Heading_4",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "points_4": {
+      "type": "BULLET",
+      "description": "Bullet points for points_4 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_4": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_4 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "side_Heading_5": {
+      "type": "TITLE",
+      "description": "title placeholder for side_Heading_5",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "points_5": {
+      "type": "BULLET",
+      "description": "Bullet points for points_5 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_5": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_5 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": true
+      }
+    },
+    "side_Heading_6": {
+      "type": "TITLE",
+      "description": "title placeholder for side_Heading_6",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "points_6": {
+      "type": "BULLET",
+      "description": "Bullet points for points_6 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_6": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_6 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "side_Heading_7": {
+      "type": "TITLE",
+      "description": "title placeholder for side_Heading_7",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "points_7": {
+      "type": "BULLET",
+      "description": "Bullet points for points_7 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_7": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_7 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "side_Heading_8": {
+      "type": "TITLE",
+      "description": "title placeholder for side_Heading_8",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "points_8": {
+      "type": "BULLET",
+      "description": "Bullet points for points_8 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_8": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_8 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "points_9": {
+      "type": "BULLET",
+      "description": "Bullet points for points_9 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_9": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_9 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "points_10": {
+      "type": "BULLET",
+      "description": "Bullet points for points_10 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_10": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_10 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "points_11": {
+      "type": "BULLET",
+      "description": "Bullet points for points_11 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_11": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_11 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "points_12": {
+      "type": "BULLET",
+      "description": "Bullet points for points_12 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_12": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_12 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "points_13": {
+      "type": "BULLET",
+      "description": "Bullet points for points_13 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_13": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_13 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "points_14": {
+      "type": "BULLET",
+      "description": "Bullet points for points_14 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_14": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_14 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "points_15": {
+      "type": "BULLET",
+      "description": "Bullet points for points_15 - 2 concise bullet points explaining a key feature",
+      "content_requirements": {
+        "min_words": 20,
+        "max_words": 30,
+        "style": "professional, concise, feature-focused"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "scope_img_15": {
+      "type": "IMAGE",
+      "description": "image placeholder for scope_img_15 - visual representation of key feature or scope component",
+      "content_requirements": {
+        "aspect_ratio": "portrait",
+        "quality": "high",
+        "style": "professional, realistic, context-specific"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false
+      }
+    },
+    "target_audience": {
+      "type": "TEXT",
+      "description": "text placeholder for target_audience",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "diverse_range_of_users": {
+      "type": "TEXT",
+      "description": "text placeholder for diverse_range_of_users",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "b1": {
+      "type": "TEXT",
+      "description": "text placeholder for b1",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "breakup_1": {
+      "type": "TEXT",
+      "description": "text placeholder for breakup_1",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "b2": {
+      "type": "TEXT",
+      "description": "text placeholder for b2",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "breakup_2": {
+      "type": "TEXT",
+      "description": "text placeholder for breakup_2",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "b3": {
+      "type": "TEXT",
+      "description": "text placeholder for b3",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "breakup_3": {
+      "type": "TEXT",
+      "description": "text placeholder for breakup_3",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "b4": {
+      "type": "TEXT",
+      "description": "text placeholder for b4",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "breakup_4": {
+      "type": "TEXT",
+      "description": "text placeholder for breakup_4",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "b5": {
+      "type": "TEXT",
+      "description": "text placeholder for b5",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "breakup_5": {
+      "type": "TEXT",
+      "description": "text placeholder for breakup_5",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "b6": {
+      "type": "TEXT",
+      "description": "text placeholder for b6",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "breakup_6": {
+      "type": "TEXT",
+      "description": "text placeholder for breakup_6",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "d_i_image_1": {
+      "type": "IMAGE",
+      "description": "image placeholder for d_i_image_1",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "follow_reference_link_1": {
+      "type": "TEXT",
+      "description": "text placeholder for follow_reference_link_1",
+      "content_requirements": {
+        "min_words": 3,
+        "max_words": 3,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "follow_reference_link_3": {
+      "type": "TEXT",
+      "description": "text placeholder for follow_reference_link_3",
+      "content_requirements": {
+        "min_words": 3,
+        "max_words": 3,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "follow_reference_link_2": {
+      "type": "TEXT",
+      "description": "text placeholder for follow_reference_link_2",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "design": {
+      "type": "TEXT",
+      "description": "text placeholder for design",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "inspiration": {
+      "type": "TEXT",
+      "description": "text placeholder for inspiration",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "d_i_image_2": {
+      "type": "IMAGE",
+      "description": "image placeholder for d_i_image_2",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "follow_reference_link_6": {
+      "type": "TEXT",
+      "description": "text placeholder for follow_reference_link_6",
+      "content_requirements": {
+        "min_words": 3,
+        "max_words": 3,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "Open Cost Estimate": {
+      "type": "TEXT",
+      "description": "text placeholder for Open Cost Estimate",
+      "content_requirements": {
+        "min_words": 3,
+        "max_words": 3,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "View Estimate": {
+      "type": "TEXT",
+      "description": "text placeholder for View Estimate",
+      "content_requirements": {
+        "min_words": 3,
+        "max_words": 3,
+        "style": "professional"
+      },
+       "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "follow_reference_link_4": {
+      "type": "TEXT",
+      "description": "text placeholder for follow_reference_link_4",
+      "content_requirements": {
+        "min_words": 3,
+        "max_words": 3,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "follow_reference_link_5": {
+      "type": "TEXT",
+      "description": "text placeholder for follow_reference_link_5",
+      "content_requirements": {
+        "min_words": 3,
+        "max_words": 3,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "team": {
+      "type": "TEXT",
+      "description": "text placeholder for team",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "composition": {
+      "type": "TEXT",
+      "description": "text placeholder for composition",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "what_is_an": {
+      "type": "TEXT",
+      "description": "text placeholder for what_is_an",
+      "content_requirements": {
+        "min_words": 3,
+        "max_words": 3,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "effort_estimation_q": {
+      "type": "TEXT",
+      "description": "text placeholder for effort_estimation_q",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 2,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "days": {
+      "type": "TEXT",
+      "description": "text placeholder for days",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "project_timeline": {
+      "type": "TEXT",
+      "description": "text placeholder for project_timeline",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 2,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "p_b": {
+      "type": "TEXT",
+      "description": "text placeholder for p_b",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "budget": {
+      "type": "TEXT",
+      "description": "text placeholder for budget",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "d_v": {
+      "type": "TEXT",
+      "description": "text placeholder for d_v",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "d_p": {
+      "type": "TEXT",
+      "description": "text placeholder for d_p",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "d_b": {
+      "type": "TEXT",
+      "description": "text placeholder for d_b",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 6,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "our": {
+      "type": "TEXT",
+      "description": "text placeholder for our",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "process": {
+      "type": "TEXT",
+      "description": "text placeholder for process",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "our_process_desc": {
+      "type": "TEXT",
+      "description": "text placeholder for our_process_desc",
+      "content_requirements": {
+        "min_words": 70,
+        "max_words": 85,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "conclusion": {
+      "type": "TEXT",
+      "description": "text placeholder for conclusion",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "conclusion_para": {
+      "type": "PARAGRAPH",
+      "description": "paragraph placeholder for conclusion_para",
+      "content_requirements": {
+        "min_words": 100,
+        "max_words": 120,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "project_goals": {
+      "type": "TEXT",
+      "description": "Text placeholder for project goals",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 2,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "u0022": {
+      "type": "SYMBOL",
+      "description": "Quote symbol placeholder - displays double quote character",
+      "content_requirements": {
+        "min_words": 1,
+        "max_words": 1,
+        "style": "symbol"
+      },
+      "auto_fill": {
+        "use_project_name": false,
+        "use_company_name": false,
+        "default_value": "\""
+      }
+    },
+    "p_r_1": {
+      "type": "TEXT",
+      "description": "Primary resource title 1 (e.g., Project Manager, UX Designer, Frontend Developer)",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 3,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": false,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "p_r_2": {
+      "type": "TEXT",
+      "description": "Primary resource title 2",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 3,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": false,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "p_r_3": {
+      "type": "TEXT",
+      "description": "Primary resource title 3",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 3,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": false,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "pr_desc_1": {
+      "type": "PARAGRAPH",
+      "description": "Description of primary resource 1 roles and responsibilities",
+      "content_requirements": {
+        "min_words": 8,
+        "max_words": 12,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "pr_desc_2": {
+      "type": "PARAGRAPH",
+      "description": "Description of primary resource 2 roles and responsibilities",
+      "content_requirements": {
+        "min_words": 8,
+        "max_words": 12,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "pr_desc_3": {
+      "type": "PARAGRAPH",
+      "description": "Description of primary resource 3 roles and responsibilities",
+      "content_requirements": {
+        "min_words": 8,
+        "max_words": 12,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "s_r_1": {
+      "type": "TEXT",
+      "description": "Secondary resource title 1 (typically Backend Developer or Software Tester)",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": false,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "s_r_2": {
+      "type": "TEXT",
+      "description": "Secondary resource title 2",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": false,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "s_r_3": {
+      "type": "TEXT",
+      "description": "Secondary resource title 3 (e.g., Network Engineer, Graphic Designer, SEO Analyst, Content Writer)",
+      "content_requirements": {
+        "min_words": 2,
+        "max_words": 4,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": false,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "sr_desc_1": {
+      "type": "PARAGRAPH",
+      "description": "Description of secondary resource 1 roles and responsibilities",
+      "content_requirements": {
+        "min_words": 8,
+        "max_words": 12,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "sr_desc_2": {
+      "type": "PARAGRAPH",
+      "description": "Description of secondary resource 2 roles and responsibilities",
+      "content_requirements": {
+        "min_words": 8,
+        "max_words": 12,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    },
+    "sr_desc_3": {
+      "type": "PARAGRAPH",
+      "description": "Description of secondary resource 3 roles and responsibilities",
+      "content_requirements": {
+        "min_words": 8, 
+        "max_words": 12,
+        "style": "professional"
+      },
+      "auto_fill": {
+        "use_project_name": true,
+        "use_company_name": true,
+        "suffix": "",
+        "prefix": ""
+      }
+    }
+  },
+  "content_generation_rules": {
+    "company_mode": {
+      "enabled": true,
+      "default_context": "company_name",
+      "theme_generation": true,
+      "image_generation": true,
+      "tone_profile": "corporate, strategic, formal",
+      "style_preferences": {
+        "color_palette": "aligned_with_brand",
+        "visual_density": "balanced",
+        "text_tone": "executive"
+      }
+    },
+    "general_mode": {
+      "enabled": true,
+      "default_context": "user_input",
+      "theme_generation": false,
+      "image_generation": false,
+      "tone_profile": "neutral, informative, general-purpose",
+      "style_preferences": {
+        "color_palette": "default",
+        "visual_density": "light",
+        "text_tone": "neutral"
+      }
+    }
+  },
+  "placeholder_detection": {
+    "pattern": "\\{\\{([^}]+)\\}\\}",
+    "case_sensitive": false,
+    "auto_clean": true,
+    "description": "Detects dynamic text placeholders in templates and replaces them with AI-generated or provided content."
+  },
+  "content_optimization": {
+    "remove_markdown": true,
+    "enforce_word_limits": true,
+    "clean_punctuation": true,
+    "trim_whitespace": true,
+    "smart_capitalization": true,
+    "normalize_spacing": true,
+    "description": "Ensures generated content is polished, well-formatted, and presentation-ready."
+  }
+}

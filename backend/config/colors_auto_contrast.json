@@ -1,0 +1,66 @@
+{
+    "description": "Auto-contrast colors that adapt to primary color brightness",
+    "enabled": true,
+    "placeholders": {
+        "scope_desc": {
+            "bold": false,
+            "italic": false,
+            "description": "Project scope description - text color auto-contrasts with primary"
+        },
+        "comprehensive_design_job": {
+            "bold": true,
+            "italic": false,
+            "description": "Section title - text color auto-contrasts with primary"
+        },
+        "scope_of_project": {
+            "bold": true,
+            "italic": false,
+            "description": "Section title - text color auto-contrasts with primary"
+        },
+        "u0022": {
+            "bold": false,
+            "italic": false,
+            "description": "Quote symbol - text color auto-contrasts with primary"
+        },
+        "1": {
+            "bold": true,
+            "italic": false,
+            "theme_color_key": "secondary_color",
+            "description": "Numeric marker 1 - auto-contrast with secondary"
+        },
+        "2": {
+            "bold": true,
+            "italic": false,
+            "theme_color_key": "secondary_color",
+            "description": "Numeric marker 2 - auto-contrast with secondary"
+        },
+        "3": {
+            "bold": true,
+            "italic": false,
+            "theme_color_key": "secondary_color",
+            "description": "Numeric marker 3 - auto-contrast with secondary"
+        },
+        "4": {
+            "bold": true,
+            "italic": false,
+            "theme_color_key": "secondary_color",
+            "description": "Numeric marker 4 - auto-contrast with secondary"
+        },
+        "View Estimate": {
+            "bold": true,
+            "italic": false,
+            "description": "Call-to-action text - auto-contrast with primary"
+        },
+        "Open Cost Estimate": {
+            "bold": true,
+            "italic": false,
+            "description": "Call-to-action text - auto-contrast with primary"
+        }
+    },
+    "logic": {
+        "brightness_threshold": 0.5,
+        "if_light_background": "#000000",
+        "if_dark_background": "#FFFFFF"
+    }
+}
+

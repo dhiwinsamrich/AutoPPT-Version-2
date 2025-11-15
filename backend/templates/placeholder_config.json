@@ -1,0 +1,467 @@
+{
+  "placeholder_specifications": {
+    "projectName": {
+      "type": "TITLE",
+      "description": "Main project title - should be prominent and eye-catching",
+      "content_length": {
+        "min": 5,
+        "max": 50,
+        "recommended": 20
+      },
+      "size": {
+        "width": 400,
+        "height": 60,
+        "unit": "PT"
+      },
+      "styling": {
+        "font_size": 24,
+        "bold": true,
+        "italic": false,
+        "color": "#2563eb"
+      },
+      "position": {
+        "x": 50,
+        "y": 100
+      }
+    },
+    "companyName": {
+      "type": "SUBTITLE",
+      "description": "Company name - should be professional and clearly visible",
+      "content_length": {
+        "min": 3,
+        "max": 40,
+        "recommended": 15
+      },
+      "size": {
+        "width": 350,
+        "height": 50,
+        "unit": "PT"
+      },
+      "styling": {
+        "font_size": 20,
+        "bold": true,
+        "italic": false,
+        "color": "#1e40af"
+      },
+      "position": {
+        "x": 50,
+        "y": 180
+      }
+    },
+    "proposalName": {
+      "type": "SUBTITLE",
+      "description": "Type of proposal - should indicate the document purpose",
+      "content_length": {
+        "min": 8,
+        "max": 35,
+        "recommended": 20
+      },
+      "size": {
+        "width": 300,
+        "height": 40,
+        "unit": "PT"
+      },
+      "styling": {
+        "font_size": 16,
+        "bold": false,
+        "italic": false,
+        "color": "#3b82f6"
+      },
+      "position": {
+        "x": 50,
+        "y": 250
+      }
+    },
+    "image_1": {
+      "type": "IMAGE",
+      "description": "Main hero image - should be professional and relevant to the project",
+      "content_length": {
+        "min": 0,
+        "max": 0,
+        "recommended": 0
+      },
+      "size": {
+        "width": 200,
+        "height": 150,
+        "unit": "PT"
+      },
+      "styling": {
+        "aspect_ratio": "4:3",
+        "quality": "high",
+        "format": "PNG"
+      },
+      "position": {
+        "x": 500,
+        "y": 100
+      }
+    },
+    "backgroundImage": {
+      "type": "BACKGROUND",
+      "description": "Background overlay trigger - creates themed overlay on slide",
+      "content_length": {
+        "min": 0,
+        "max": 0,
+        "recommended": 0
+      },
+      "size": {
+        "width": 720,
+        "height": 405,
+        "unit": "PT"
+      },
+      "styling": {
+        "overlay_alpha": 0.3,
+        "overlay_color": "primary_theme"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "logo": {
+      "type": "IMAGE",
+      "description": "Company logo - professional brand mark with ultra-clear quality",
+      "content_length": {
+        "min": 0,
+        "max": 0,
+        "recommended": 0
+      },
+      "size": {
+        "width": 200,
+        "height": 200,
+        "unit": "PT"
+      },
+      "styling": {
+        "aspect_ratio": "1:1",
+        "quality": "ultra-high",
+        "format": "PNG",
+        "transparency": true
+      },
+      "position": {
+        "x": 50,
+        "y": 50
+      }
+    },
+    "companyLogo": {
+      "type": "IMAGE",
+      "description": "Company logo - professional brand mark with ultra-clear quality",
+      "content_length": {
+        "min": 0,
+        "max": 0,
+        "recommended": 0
+      },
+      "size": {
+        "width": 200,
+        "height": 200,
+        "unit": "PT"
+      },
+      "styling": {
+        "aspect_ratio": "1:1",
+        "quality": "ultra-high",
+        "format": "PNG",
+        "transparency": true
+      },
+      "position": {
+        "x": 50,
+        "y": 50
+      }
+    },
+    "content_1": {
+      "type": "PARAGRAPH",
+      "description": "Main content paragraph - should explain project overview",
+      "content_length": {
+        "min": 20,
+        "max": 200,
+        "recommended": 100
+      },
+      "size": {
+        "width": 400,
+        "height": 80,
+        "unit": "PT"
+      },
+      "styling": {
+        "font_size": 14,
+        "bold": false,
+        "italic": false,
+        "color": "#1f2937",
+        "line_spacing": 1.2
+      },
+      "position": {
+        "x": 50,
+        "y": 320
+      }
+    },
+    "content_2": {
+      "type": "PARAGRAPH",
+      "description": "Secondary content paragraph - should provide additional details",
+      "content_length": {
+        "min": 20,
+        "max": 200,
+        "recommended": 100
+      },
+      "size": {
+        "width": 400,
+        "height": 80,
+        "unit": "PT"
+      },
+      "styling": {
+        "font_size": 14,
+        "bold": false,
+        "italic": false,
+        "color": "#1f2937",
+        "line_spacing": 1.2
+      },
+      "position": {
+        "x": 50,
+        "y": 420
+      }
+    },
+    "bullet_1": {
+      "type": "BULLET",
+      "description": "First bullet point - should highlight key feature or benefit",
+      "content_length": {
+        "min": 10,
+        "max": 60,
+        "recommended": 30
+      },
+      "size": {
+        "width": 350,
+        "height": 30,
+        "unit": "PT"
+      },
+      "styling": {
+        "font_size": 12,
+        "bold": false,
+        "italic": false,
+        "color": "#374151",
+        "bullet_style": "•"
+      },
+      "position": {
+        "x": 70,
+        "y": 520
+      }
+    },
+    "bullet_2": {
+      "type": "BULLET",
+      "description": "Second bullet point - should highlight another key feature",
+      "content_length": {
+        "min": 10,
+        "max": 60,
+        "recommended": 30
+      },
+      "size": {
+        "width": 350,
+        "height": 30,
+        "unit": "PT"
+      },
+      "styling": {
+        "font_size": 12,
+        "bold": false,
+        "italic": false,
+        "color": "#374151",
+        "bullet_style": "•"
+      },
+      "position": {
+        "x": 70,
+        "y": 560
+      }
+    },
+    "bullet_3": {
+      "type": "BULLET",
+      "description": "Third bullet point - should highlight final key feature",
+      "content_length": {
+        "min": 10,
+        "max": 60,
+        "recommended": 30
+      },
+      "size": {
+        "width": 350,
+        "height": 30,
+        "unit": "PT"
+      },
+      "styling": {
+        "font_size": 12,
+        "bold": false,
+        "italic": false,
+        "color": "#374151",
+        "bullet_style": "•"
+      },
+      "position": {
+        "x": 70,
+        "y": 600
+      }
+    },
+    "footer": {
+      "type": "FOOTER",
+      "description": "Footer text - should contain disclaimer or contact info",
+      "content_length": {
+        "min": 5,
+        "max": 80,
+        "recommended": 40
+      },
+      "size": {
+        "width": 400,
+        "height": 25,
+        "unit": "PT"
+      },
+      "styling": {
+        "font_size": 10,
+        "bold": false,
+        "italic": true,
+        "color": "#6b7280"
+      },
+      "position": {
+        "x": 50,
+        "y": 650
+      }
+    },
+
+    "projectOverview": {
+      "type": "PARAGRAPH",
+      "description": "Project overview paragraph - comprehensive description of the project",
+      "content_length": {
+        "min": 50,
+        "max": 60,
+        "recommended": 55
+      },
+      "size": {
+        "width": 500,
+        "height": 120,
+        "unit": "PT"
+      },
+      "styling": {
+        "font_size": 14,
+        "bold": false,
+        "italic": false,
+        "color": "#1f2937",
+        "line_spacing": 1.4
+      },
+      "position": {
+        "x": 50,
+        "y": 200
+      }
+    },
+
+    "image_3": {
+      "type": "IMAGE",
+      "description": "Third supporting image - additional project visuals or diagrams",
+      "content_length": {
+        "min": 0,
+        "max": 0,
+        "recommended": 0
+      },
+      "size": {
+        "width": 200,
+        "height": 120,
+        "unit": "PT"
+      },
+      "styling": {
+        "aspect_ratio": "16:9",
+        "quality": "high",
+        "format": "PNG"
+      },
+      "position": {
+        "x": 600,
+        "y": 200
+      }
+    },
+
+    "property1": {
+      "type": "BULLET",
+      "description": "First project property - 2-3 word key feature description",
+      "content_length": {
+        "min": 2,
+        "max": 8,
+        "recommended": 4
+      },
+      "size": {
+        "width": 150,
+        "height": 30,
+        "unit": "PT"
+      },
+      "styling": {
+        "font_size": 12,
+        "bold": true,
+        "italic": false,
+        "color": "#3b82f6",
+        "bullet_style": "•"
+      },
+      "position": {
+        "x": 50,
+        "y": 350
+      }
+    },
+
+    "property2": {
+      "type": "BULLET",
+      "description": "Second project property - 2-3 word key feature description",
+      "content_length": {
+        "min": 2,
+        "max": 8,
+        "recommended": 4
+      },
+      "size": {
+        "width": 150,
+        "height": 30,
+        "unit": "PT"
+      },
+      "styling": {
+        "font_size": 12,
+        "bold": true,
+        "italic": false,
+        "color": "#3b82f6",
+        "bullet_style": "•"
+      },
+      "position": {
+        "x": 220,
+        "y": 350
+      }
+    },
+
+    "property3": {
+      "type": "BULLET",
+      "description": "Third project property - 2-3 word key feature description",
+      "content_length": {
+        "min": 2,
+        "max": 8,
+        "recommended": 4
+      },
+      "size": {
+        "width": 150,
+        "height": 30,
+        "unit": "PT"
+      },
+      "styling": {
+        "font_size": 12,
+        "bold": true,
+        "italic": false,
+        "color": "#3b82f6",
+        "bullet_style": "•"
+      },
+      "position": {
+        "x": 390,
+        "y": 350
+      }
+    }
+  },
+  "global_settings": {
+    "default_font": "Arial",
+    "default_unit": "PT",
+    "slide_dimensions": {
+      "width": 960,
+      "height": 540
+    },
+    "theme_colors": {
+      "primary": "#2563eb",
+      "secondary": "#1e40af",
+      "accent": "#3b82f6",
+      "text": "#1f2937",
+      "background": "#ffffff"
+    }
+  },
+  "validation_rules": {
+    "strict_mode": false,
+    "warn_on_size_mismatch": true,
+    "warn_on_length_exceed": true,
+    "auto_adjust_size": false
+  }
+}

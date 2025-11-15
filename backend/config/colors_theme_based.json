@@ -1,0 +1,480 @@
+{
+    "description": "Theme-based color configurations that use AI-generated theme colors",
+    "enabled": true,
+    "placeholders": {
+        "projectName": {
+            "theme_color": null,
+            "fallback_color": "#ffffff",
+            "bold": true,
+            "italic": false
+        },
+        "companyName": {
+            "theme_color": null,
+            "fallback_color": "#ffffff",
+            "bold": true,
+            "italic": false
+        },
+        "proposalName": {
+            "theme_color": null,
+            "fallback_color": "#ffffff",
+            "bold": true,
+            "italic": false
+        },
+        "color1": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": false,
+            "italic": false
+        },
+        "color2": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": false,
+            "italic": false
+        },
+        "circle_1": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": false,
+            "italic": false
+        },
+        "circle_2": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": false,
+            "italic": false
+        },
+        "project": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "overview": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "target_audience": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "b1": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": false,
+            "italic": false
+        },
+        "b2": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": false,
+            "italic": false
+        },
+        "b3": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": false,
+            "italic": false
+        },
+        "b4": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": false,
+            "italic": false
+        },
+        "b5": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": false,
+            "italic": false
+        },
+        "b6": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": false,
+            "italic": false
+        },
+        "property1": {
+            "theme_color": "null",
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "property2": {
+            "theme_color": "null",
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "property3": {
+            "theme_color": "null",
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "Heading_1": {
+            "theme_color": null,
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "Heading_2": {
+            "theme_color": null,
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "Heading_3": {
+            "theme_color": null,
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "Heading_4": {
+            "theme_color": null,
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "Heading_5": {
+            "theme_color": null,
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "Heading_6": {
+            "theme_color": null,
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "budget": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "our": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "process": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "conclusion": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "p_b": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "d_b": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "d_v": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "d_p": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "what_is_an": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "days": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "effort_estimation_q": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "project_timeline": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "p_r_1": {
+            "theme_color": "null",
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "p_r_2": {
+            "theme_color": "null",
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "p_r_3": {
+            "theme_color": "null",
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "s_r_1": {
+            "theme_color": "null",
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "s_r_2": {
+            "theme_color": "null",
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "s_r_3": {
+            "theme_color": "null",
+            "fallback_color": "#000000",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_1": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_2": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_3": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_4": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_5": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_6": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_7": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_8": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_1": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_2": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_3": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_4": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_5": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_6": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_7": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_8": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_9": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_10": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_11": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_12": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_13": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_14": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Heading_15": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_9": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_10": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_11": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_12": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_13": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_14": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "side_Head_15": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": true,
+            "italic": false
+        },
+        "follow_reference_link_1": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": false,
+            "italic": false
+        },
+        "follow_reference_link_2": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": false,
+            "italic": false
+        },
+        "follow_reference_link_3": {
+            "theme_color": "primary_color",
+            "fallback_color": "#2563eb",
+            "bold": false,
+            "italic": false
+        },
+        "follow_reference_link_4": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": false,
+            "italic": false
+        },
+        "follow_reference_link_5": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": false,
+            "italic": false
+        },
+        "follow_reference_link_6": {
+            "theme_color": "secondary_color",
+            "fallback_color": "#1e40af",
+            "bold": false,
+            "italic": false
+        }
+    }
+}

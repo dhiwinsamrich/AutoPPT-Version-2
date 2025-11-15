@@ -1,0 +1,67 @@
+{
+    "scope_desc": {
+        "bold": false,
+        "italic": false
+    },
+    "comprehensive_design_job": {
+        "bold": true,
+        "italic": false
+    },
+    "scope_of_project": {
+        "bold": true,
+        "italic": false
+    },
+    "proposalName": {
+        "bold": true,
+        "italic": false
+    },
+    "project_goals": {
+        "bold": true,
+        "italic": false
+    },
+    "design": {
+        "bold": true,
+        "italic": false
+    },
+    "inspiration": {
+        "bold": true,
+        "italic": false
+    },
+    "team": {
+        "bold": true,
+        "italic": false
+    },
+    "composition": {
+        "bold": true,
+        "italic": false
+    },
+    "u0022": {
+        "bold": false,
+        "italic": false
+    },
+    "follow_reference_link_1": {
+        "bold": false,
+        "italic": false
+    },
+    "follow_reference_link_2": {
+        "bold": false,
+        "italic": false
+    },
+    "follow_reference_link_3": {
+        "bold": false,
+        "italic": false
+    },
+    "follow_reference_link_4": {
+        "bold": false,
+        "italic": false
+    },
+    "follow_reference_link_5": {
+        "bold": false,
+        "italic": false
+    },
+    "follow_reference_link_6": {
+        "bold": false,
+        "italic": false
+    }
+}
+
