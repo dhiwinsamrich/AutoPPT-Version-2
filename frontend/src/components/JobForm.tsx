@@ -91,7 +91,7 @@ export function JobForm({ onStartAuto, onStartCopy, onStartInteractive, busy, cl
           <Input className="mt-2" placeholder="https://example.com" value={companyWebsite} onChange={e => setCompanyWebsite(e.target.value)} />
         </div>
         <div>
-          <label className="text-xs font-medium uppercase tracking-wide text-white/50">Google Sheet</label>
+          <label className="text-xs font-medium uppercase tracking-wide text-white/50">Effort Estimation Sheet Link</label>
           <Input
             className="mt-2"
             placeholder="https://docs.google.com/spreadsheets/d/... or Sheet ID"

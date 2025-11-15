@@ -738,19 +738,6 @@
         "prefix": ""
       }
     },
-    "scope_img_1": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_1 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
-      }
-    },
     "circle_2": {
       "type": "COLOR",
       "description": "Secondary color element for circle shape - displays secondary theme color",
@@ -763,19 +750,6 @@
         "use_theme_color": true,
         "theme_color_key": "secondary_color",
         "display_type": "color_swatch"
-      }
-    },
-    "scope_img_2": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_2 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
       }
     },
     "side_Heading_2": {
@@ -838,19 +812,6 @@
         "prefix": ""
       }
     },
-    "scope_img_3": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_3 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
-      }
-    },
     "side_Heading_4": {
       "type": "TITLE",
       "description": "title placeholder for side_Heading_4",
@@ -879,19 +840,6 @@
         "use_company_name": true,
         "suffix": "",
         "prefix": ""
-      }
-    },
-    "scope_img_4": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_4 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
       }
     },
     "side_Heading_5": {
@@ -924,19 +872,6 @@
         "prefix": ""
       }
     },
-    "scope_img_5": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_5 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": true
-      }
-    },
     "side_Heading_6": {
       "type": "TITLE",
       "description": "title placeholder for side_Heading_6",
@@ -965,19 +900,6 @@
         "use_company_name": true,
         "suffix": "",
         "prefix": ""
-      }
-    },
-    "scope_img_6": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_6 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
       }
     },
     "side_Heading_7": {
@@ -1010,19 +932,6 @@
         "prefix": ""
       }
     },
-    "scope_img_7": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_7 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
-      }
-    },
     "side_Heading_8": {
       "type": "TITLE",
       "description": "title placeholder for side_Heading_8",
@@ -1053,19 +962,6 @@
         "prefix": ""
       }
     },
-    "scope_img_8": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_8 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
-      }
-    },
     "points_9": {
       "type": "BULLET",
       "description": "Bullet points for points_9 - 2 concise bullet points explaining a key feature",
@@ -1079,19 +975,6 @@
         "use_company_name": true,
         "suffix": "",
         "prefix": ""
-      }
-    },
-    "scope_img_9": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_9 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
       }
     },
     "points_10": {
@@ -1109,19 +992,6 @@
         "prefix": ""
       }
     },
-    "scope_img_10": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_10 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
-      }
-    },
     "points_11": {
       "type": "BULLET",
       "description": "Bullet points for points_11 - 2 concise bullet points explaining a key feature",
@@ -1135,19 +1005,6 @@
         "use_company_name": true,
         "suffix": "",
         "prefix": ""
-      }
-    },
-    "scope_img_11": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_11 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
       }
     },
     "points_12": {
@@ -1165,19 +1022,6 @@
         "prefix": ""
       }
     },
-    "scope_img_12": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_12 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
-      }
-    },
     "points_13": {
       "type": "BULLET",
       "description": "Bullet points for points_13 - 2 concise bullet points explaining a key feature",
@@ -1191,19 +1035,6 @@
         "use_company_name": true,
         "suffix": "",
         "prefix": ""
-      }
-    },
-    "scope_img_13": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_13 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
       }
     },
     "points_14": {
@@ -1221,19 +1052,6 @@
         "prefix": ""
       }
     },
-    "scope_img_14": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_14 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
-      }
-    },
     "points_15": {
       "type": "BULLET",
       "description": "Bullet points for points_15 - 2 concise bullet points explaining a key feature",
@@ -1247,19 +1065,6 @@
         "use_company_name": true,
         "suffix": "",
         "prefix": ""
-      }
-    },
-    "scope_img_15": {
-      "type": "IMAGE",
-      "description": "image placeholder for scope_img_15 - visual representation of key feature or scope component",
-      "content_requirements": {
-        "aspect_ratio": "portrait",
-        "quality": "high",
-        "style": "professional, realistic, context-specific"
-      },
-      "auto_fill": {
-        "use_project_name": false,
-        "use_company_name": false
       }
     },
     "target_audience": {

@@ -72,23 +72,6 @@ MANUAL_CROP_DIMS = {
     'image_3': {'width': 8.33, 'height': 10.83, 'unit': 'IN'},  # Portrait
     'backgroundImage': {'width': 26.67, 'height': 15.0, 'unit': 'IN'},  # Landscape
     
-    # Scope image placeholders (all same size - portrait)
-    'scope_img_1': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_2': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_3': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_4': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_5': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_6': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_7': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_8': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_9': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_10': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_11': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_12': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_13': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_14': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    'scope_img_15': {'width': 5.75, 'height': 12.74, 'unit': 'IN'},  # Portrait
-    
     # Logo placeholders - use numbered variants if you have multiple companyLogo with different sizes
     # Update these dimensions based on your actual template placeholders
     'companyLogo_1': {'width': 3.22, 'height': 2.6, 'unit': 'IN'},  # First companyLogo (adjust dimensions)

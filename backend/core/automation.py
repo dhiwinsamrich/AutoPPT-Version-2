@@ -1032,7 +1032,7 @@ class PPTAutomation:
                     self.logger.warning(f"Background image replacement failed: {e}")
                 continue
             
-            if inferred == 'IMAGE' or name.lower().startswith('image') or name.lower().startswith('scope_img') or name.lower() in ('logo', 'companylogo') or name.lower().startswith('companylogo'):
+            if inferred == 'IMAGE' or name.lower().startswith('image') or name.lower() in ('logo', 'companylogo') or name.lower().startswith('companylogo'):
                 image_targets.append((name, ph.get('slide_id'), ph.get('element_id')))
             elif inferred == 'COLOR' or name.lower().startswith('color') or name.lower().startswith('circle'):
                 # Handle color placeholders - get color from theme or config
@@ -2244,12 +2244,15 @@ class PPTAutomation:
         # companyLogo follows standard placeholder replacement policy
         for ph in placeholders:
             placeholder_name = ph['placeholder']
-            # Check if it's an image placeholder (including scope_img placeholders)
+            # Check if it's an image placeholder (scope_img placeholders are excluded)
             is_company_logo_variant = placeholder_name.lower() == 'companylogo' or placeholder_name.lower().startswith('companylogo_')
             is_image = (placeholder_name in ['image_2', 'image_3', 'logo', 'companyLogo', 'chart_1'] or 
                        is_company_logo_variant or
-                       placeholder_name.startswith('scope_img') or
                        placeholder_name.startswith('d_i_image'))
+            
+            # Skip scope_img placeholders - they are not generated
+            if placeholder_name.startswith('scope_img'):
+                continue
             
             if is_image and placeholder_name not in [k.replace('IMAGE_', '') for k in final_image_map.keys()]:
                 try:
