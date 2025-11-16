@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useRef } from 'react'
 import { JobForm } from './components/JobForm'
 import { SuccessPage } from './components/SuccessPage'
 import { ProgressBar } from './components/ProgressBar'
 import { Textarea } from './components/ui/textarea'
+import { Button } from './components/ui/button'
 import logo from '../logo.png'
 import { startAutoJob, startCopyJob, startInteractiveJob, getJob, getJobLogs } from './api'
 
@@ -14,6 +15,67 @@ export default function App() {
   const [resultName, setResultName] = useState<string | null>(null)
   const [polling, setPolling] = useState<number>(0)
   const [projectDescription, setProjectDescription] = useState('')
+  const getFormValuesRef = useRef<(() => any) | null>(null)
+  const [copied, setCopied] = useState(false)
+  const [showToast, setShowToast] = useState(false)
+
+  const promptTemplate = `Prompt template : (Required)
+Click the copy button to copy the prompt template to the clipboard. `
+
+  const handleCopyTemplate = async () => {
+    console.log('Copy button clicked, template length:', promptTemplate.length)
+    
+    try {
+      // Try modern clipboard API first
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        console.log('Using modern clipboard API')
+        await navigator.clipboard.writeText(promptTemplate)
+        console.log('Successfully copied to clipboard')
+        setCopied(true)
+        setShowToast(true)
+        setTimeout(() => {
+          setCopied(false)
+          setShowToast(false)
+        }, 2000)
+      } else {
+        console.log('Clipboard API not available, using fallback')
+        throw new Error('Clipboard API not available')
+      }
+    } catch (err) {
+      console.error('Clipboard API failed, trying fallback:', err)
+      // Fallback method for browsers that don't support clipboard API
+      const textArea = document.createElement('textarea')
+      textArea.value = promptTemplate
+      textArea.style.position = 'fixed'
+      textArea.style.left = '-999999px'
+      textArea.style.top = '-999999px'
+      textArea.style.opacity = '0'
+      document.body.appendChild(textArea)
+      textArea.focus()
+      textArea.select()
+      
+      try {
+        const successful = document.execCommand('copy')
+        if (successful) {
+          console.log('Fallback copy successful')
+          setCopied(true)
+          setShowToast(true)
+          setTimeout(() => {
+            setCopied(false)
+            setShowToast(false)
+          }, 2000)
+        } else {
+          console.error('Fallback copy command returned false')
+          alert('Failed to copy. Please copy manually from the textarea.')
+        }
+      } catch (fallbackErr) {
+        console.error('Fallback copy error:', fallbackErr)
+        alert('Failed to copy. Please copy manually from the textarea.')
+      } finally {
+        document.body.removeChild(textArea)
+      }
+    }
+  }
 
   useEffect(() => {
     if (!jobId) return
@@ -71,6 +133,33 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
+      {/* Toast Notification */}
+      {showToast && (
+        <div 
+          className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ease-in-out"
+          style={{
+            animation: 'slideDown 0.3s ease-out'
+          }}
+        >
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 shadow-lg shadow-black/50">
+            <p className="text-sm font-medium text-white">Prompt template Copied</p>
+          </div>
+        </div>
+      )}
+      
+      <style>{`
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -20px);
+          }
+          to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+          }
+        }
+      `}</style>
+      
       <div className="mx-auto max-w-6xl px-5 py-10 sm:py-12 space-y-10">
         <header className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
@@ -115,6 +204,9 @@ export default function App() {
               className="h-full"
               busy={busy}
               projectDescription={projectDescription}
+              onFormValuesReady={(getFormValues) => {
+                getFormValuesRef.current = getFormValues
+              }}
               onStartAuto={async (payload) => {
                 setJobId(null)
                 setStatus('queued')
@@ -146,14 +238,72 @@ export default function App() {
 
             <aside className="space-y-5">
               <div className="card space-y-3">
-                <p className="text-sm font-medium text-white">Project description</p>
-                <p className="text-xs uppercase tracking-wide text-white/40">Give us the context for this deck</p>
+                <div>
+                  <p className="text-sm font-medium text-white">Prompt for the presentation</p>
+                  <p className="text-xs uppercase tracking-wide text-white/40">Give us the prompt for the presentation</p>
+                </div>
                 <Textarea
                   rows={10}
-                  placeholder="Summarize the opportunity, goals, timeline, scope, highlights…"
+                  placeholder={promptTemplate}
                   value={projectDescription}
                   onChange={(e) => setProjectDescription(e.target.value)}
                 />
+              </div>
+
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-xs text-white/40">You can tweak any details later directly inside Google Slides.</p>
+                <Button
+                  disabled={busy}
+                  onClick={() => {
+                    if (!getFormValuesRef.current) return
+                    
+                    const formValues = getFormValuesRef.current()
+                    const { templateKey, customTemplate, company, project, proposalType, companyWebsite, sheetsId, sheetsRange, primaryColor, secondaryColor, accentColor, templates } = formValues
+                    
+                    // Generate dynamic output title from company name and project name
+                    const dynamicOutputTitle = company && project ? `${company} - ${project}` : (company || project || 'Presentation')
+                    
+                    // Ensure colors are always sent (use defaults if empty)
+                    const finalPrimaryColor = primaryColor || '#2563eb'
+                    const finalSecondaryColor = secondaryColor || '#1e40af'
+                    const finalAccentColor = accentColor || '#3b82f6'
+                    
+                    console.log('🎨 Sending colors to backend:', {
+                      primary: finalPrimaryColor,
+                      secondary: finalSecondaryColor,
+                      accent: finalAccentColor
+                    })
+                    
+                    const payload = {
+                      template_id: (templateKey === 'custom' ? customTemplate : templates[templateKey].url) || undefined,
+                      output_title: dynamicOutputTitle,
+                      context: company || 'General Presentation',
+                      profile: 'company',
+                      project_name: project || undefined,
+                      project_description: projectDescription || undefined,
+                      company_name: company || undefined,
+                      proposal_type: proposalType || undefined,
+                      company_website: companyWebsite || undefined,
+                      sheets_id: sheetsId || undefined,
+                      sheets_range: sheetsRange || undefined,
+                      auto_detect: false,
+                      primary_color: finalPrimaryColor,
+                      secondary_color: finalSecondaryColor,
+                      accent_color: finalAccentColor,
+                    }
+                    
+                    setJobId(null)
+                    setStatus('queued')
+                    setLogs([])
+                    setResultUrl(null)
+                    setResultName(dynamicOutputTitle)
+                    startAutoJob({ ...payload, project_description: projectDescription || undefined }).then(({ job_id }) => {
+                      setJobId(job_id)
+                    })
+                  }}
+                >
+                  {busy ? 'Working…' : 'Generate presentation'}
+                </Button>
               </div>
 
               {resultUrl && status !== 'succeeded' && (
