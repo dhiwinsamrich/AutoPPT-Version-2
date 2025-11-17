@@ -1316,6 +1316,31 @@ class PPTAutomation:
         if text_map:
             self.logger.info(f"📝 About to replace {len(text_map)} placeholders: {list(text_map.keys())}")
             self.slides_client.replace_placeholders(target_id, text_map)
+            
+            # Format bullets for conclusion_para if it contains bullet markers
+            # Using dedicated function to avoid affecting other components
+            if 'conclusion_para' in text_map:
+                conclusion_content = text_map['conclusion_para']
+                # Check if content contains bullet markers
+                if '* ' in conclusion_content:
+                    self.logger.info("🔍 conclusion_para contains bullet markers, formatting bullets...")
+                    # Find the element containing conclusion_para content using dedicated function
+                    element_info = self.slides_client.find_conclusion_para_element(target_id, conclusion_content)
+                    
+                    if element_info:
+                        # Format bullets
+                        success = self.slides_client.format_bullets_for_element(
+                            target_id,
+                            element_info['element_id'],
+                            element_info['slide_id'],
+                            bullet_marker='* '
+                        )
+                        if success:
+                            self.logger.info("✅ Successfully formatted bullets for conclusion_para")
+                        else:
+                            self.logger.warning("⚠️ Failed to format bullets for conclusion_para")
+                    else:
+                        self.logger.warning("⚠️ Could not find element containing conclusion_para content")
 
         # Apply theme-based styling if available
         if theme:
@@ -2498,6 +2523,31 @@ class PPTAutomation:
             result = self.slides_client.replace_mixed_placeholders(target_id, text_map, final_image_map)
         else:
             result = self.slides_client.replace_placeholders(target_id, text_map)
+        
+        # Format bullets for conclusion_para if it contains bullet markers
+        # Using dedicated function to avoid affecting other components
+        if 'conclusion_para' in text_map:
+            conclusion_content = text_map['conclusion_para']
+            # Check if content contains bullet markers
+            if '* ' in conclusion_content:
+                self.logger.info("🔍 conclusion_para contains bullet markers, formatting bullets...")
+                # Find the element containing conclusion_para content using dedicated function
+                element_info = self.slides_client.find_conclusion_para_element(target_id, conclusion_content)
+                
+                if element_info:
+                    # Format bullets
+                    success = self.slides_client.format_bullets_for_element(
+                        target_id,
+                        element_info['element_id'],
+                        element_info['slide_id'],
+                        bullet_marker='* '
+                    )
+                    if success:
+                        self.logger.info("✅ Successfully formatted bullets for conclusion_para")
+                    else:
+                        self.logger.warning("⚠️ Failed to format bullets for conclusion_para")
+                else:
+                    self.logger.warning("⚠️ Could not find element containing conclusion_para content")
         
         if result:
             presentation_url = self.slides_client.get_presentation_url(target_id)

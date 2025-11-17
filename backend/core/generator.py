@@ -1783,6 +1783,41 @@ Return ONLY valid JSON with all the above keys. No explanations, no markdown for
                 # Fallback to original text processing
                 text = text.replace('\n', ' ')
         
+        # Special handling for conclusion_para - preserve * bullet markers for API formatting
+        if placeholder_type == 'conclusion_para':
+            # Convert escaped newlines to actual newlines
+            text = text.replace('\\n', '\n')
+            # Split by newlines
+            lines = text.split('\n')
+            cleaned_lines = []
+            for line in lines:
+                line = line.strip()
+                # Check if line starts with * (bullet marker from AI)
+                if line.startswith('* '):
+                    # Preserve the * marker - this will be used for Google Slides API formatting
+                    # Remove markdown formatting but keep * at start
+                    cleaned_line = re.sub(r'\*\*([^*]+)\*\*', r'\1', line)
+                    cleaned_line = re.sub(r'(?<!\*)\*([^*]+)\*(?!\*)', r'\1', cleaned_line)  # Remove italic but not leading *
+                    if cleaned_line and len(cleaned_line) > 3:  # Keep lines with content
+                        cleaned_lines.append(cleaned_line)
+                elif line:
+                    # Non-bullet line - remove all markdown including *
+                    cleaned_line = re.sub(r'\*\*([^*]+)\*\*', r'\1', line)
+                    cleaned_line = re.sub(r'\*([^*]+)\*', r'\1', cleaned_line)
+                    if cleaned_line and len(cleaned_line) > 3:
+                        cleaned_lines.append(cleaned_line)
+            
+            # Join with newlines, preserving * markers
+            if cleaned_lines:
+                result = '\n'.join(cleaned_lines)
+                # Remove other unwanted characters but preserve * at line starts
+                result = re.sub(r'[\[\](){}]', '', result)
+                result = re.sub(r'["""]', '"', result)
+                return result
+            else:
+                # Fallback to original text processing
+                text = text.replace('\n', ' ')
+        
         # Special handling for specific placeholders - return them directly
         if placeholder_type == '"':
             return '"'

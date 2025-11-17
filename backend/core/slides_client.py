@@ -738,6 +738,300 @@ class SlidesClient:
         except Exception as e:
             self.logger.error(f"Error getting slide IDs: {e}")
             return []
+    
+    def find_conclusion_para_element(self, presentation_id, conclusion_content):
+        """Find the text element containing conclusion_para content.
+        This function is specifically designed for conclusion_para only to avoid affecting other components.
+        
+        Args:
+            presentation_id: The ID of the presentation
+            conclusion_content: The conclusion_para text content to search for
+            
+        Returns:
+            dict with 'element_id', 'slide_id', and 'text_content', or None if not found
+        """
+        try:
+            presentation = self.get_presentation(presentation_id)
+            if not presentation:
+                return None
+            
+            # Use a portion of the conclusion content for matching (first 100 chars)
+            search_text = conclusion_content[:100] if len(conclusion_content) > 100 else conclusion_content
+            search_normalized = search_text.strip().lower()
+            
+            # Also check for bullet markers to make matching more specific
+            has_bullet_markers = '* ' in conclusion_content
+            
+            for slide in presentation.get('slides', []):
+                slide_id = slide.get('objectId')
+                for element in slide.get('pageElements', []):
+                    element_id = element.get('objectId')
+                    if element_id and 'shape' in element:
+                        shape = element.get('shape', {})
+                        if shape.get('text'):
+                            text_elements = shape['text'].get('textElements', [])
+                            text_content = ''
+                            for te in text_elements:
+                                if 'textRun' in te:
+                                    text_content += te.get('textRun', {}).get('content', '')
+                            
+                            # Check if this element contains the search text
+                            element_normalized = text_content[:150].strip().lower()
+                            
+                            # Match if search text is found in element, or if both have bullet markers
+                            if search_normalized in element_normalized or element_normalized in search_normalized:
+                                # Additional validation: if conclusion has bullet markers, element should too
+                                if has_bullet_markers and '* ' not in text_content:
+                                    continue
+                                
+                                self.logger.info(f"✅ Found conclusion_para element: {element_id} on slide {slide_id}")
+                                return {
+                                    'element_id': element_id,
+                                    'slide_id': slide_id,
+                                    'text_content': text_content
+                                }
+            
+            return None
+            
+        except Exception as e:
+            self.logger.error(f"Error finding conclusion_para element: {e}")
+            return None
+    
+    def format_bullets_for_element(self, presentation_id, element_id, slide_id, bullet_marker='* '):
+        """Format paragraphs starting with bullet marker as bullets using Google Slides API.
+        
+        Args:
+            presentation_id: The ID of the presentation
+            element_id: The object ID of the text element
+            slide_id: The slide ID containing the element
+            bullet_marker: The marker used to identify bullet lines (default: '* ')
+            
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        try:
+            # First, reload presentation to get current text structure
+            presentation = self.get_presentation(presentation_id)
+            if not presentation:
+                self.logger.error("Could not load presentation for bullet formatting")
+                return False
+            
+            # Find the element and get its text structure
+            element = None
+            for slide in presentation.get('slides', []):
+                if slide.get('objectId') == slide_id:
+                    for elem in slide.get('pageElements', []):
+                        if elem.get('objectId') == element_id:
+                            element = elem
+                            break
+                    break
+            
+            if not element or 'shape' not in element:
+                self.logger.error(f"Element {element_id} not found or is not a text shape")
+                return False
+            
+            shape = element.get('shape', {})
+            if not shape.get('text'):
+                self.logger.error(f"Element {element_id} does not contain text")
+                return False
+            
+            text_elements = shape['text'].get('textElements', [])
+            if not text_elements:
+                self.logger.error(f"Element {element_id} has no text elements")
+                return False
+            
+            # Parse text to find paragraphs starting with bullet marker
+            text_content = ''
+            for te in text_elements:
+                if 'textRun' in te:
+                    text_content += te.get('textRun', {}).get('content', '')
+            
+            # Debug: Log the text content to understand the format
+            self.logger.debug(f"🔍 Text content in element {element_id} (length: {len(text_content)}):")
+            self.logger.debug(f"   First 200 chars: {repr(text_content[:200])}")
+            self.logger.debug(f"   Contains '* ': {'* ' in text_content}")
+            
+            # First, check if bullets are on the same line (comma-separated pattern)
+            # Pattern: "* Item1, * Item2, * Item3" or "* Item1, * Item2, and * Item3"
+            needs_line_splitting = False
+            if '\n' not in text_content or text_content.count(bullet_marker) > 1:
+                # Check if multiple bullets are on same line
+                lines = text_content.split('\n')
+                for line in lines:
+                    # Count bullet markers in this line
+                    bullet_count = line.count(bullet_marker)
+                    if bullet_count > 1:
+                        needs_line_splitting = True
+                        self.logger.info(f"📋 Detected {bullet_count} bullets on same line, will split them")
+                        break
+            
+            # If bullets are on same line, split them into separate lines
+            if needs_line_splitting:
+                # Split by bullet marker pattern, but preserve the marker
+                # Pattern: "* Item1, * Item2, and * Item3." -> split into separate lines
+                import re
+                
+                # Find all bullet markers and their content
+                # Pattern matches: "* Text," or "and * Text."
+                # More robust pattern that handles various formats
+                bullet_items = []
+                # Find all "* " patterns
+                bullet_positions = []
+                for match in re.finditer(r'\*\s+', text_content):
+                    bullet_positions.append(match.start())
+                
+                if bullet_positions:
+                    # Extract text before first bullet
+                    before_first = text_content[:bullet_positions[0]].strip()
+                    # Remove trailing colon if present
+                    before_first = re.sub(r':\s*$', '', before_first)
+                    
+                    # Extract each bullet item
+                    for i, pos in enumerate(bullet_positions):
+                        # Find the end of this bullet item
+                        # Look for: comma followed by space and "*", or "and *", or end of string
+                        remaining_text = text_content[pos:]
+                        
+                        # Find the end: comma + space + "*" or "and *" or end
+                        end_match = re.search(r',\s*\*|,\s+and\s+\*|\.\s*$', remaining_text)
+                        if end_match:
+                            bullet_text = remaining_text[:end_match.start()].strip()
+                        else:
+                            # Last bullet - take until end
+                            bullet_text = remaining_text.strip()
+                        
+                        # Clean up bullet text
+                        bullet_text = re.sub(r',\s*$', '', bullet_text)  # Remove trailing comma
+                        if i < len(bullet_positions) - 1:
+                            bullet_text = re.sub(r'\.\s*$', '', bullet_text)  # Remove period (not last)
+                        
+                        bullet_items.append(bullet_text)
+                    
+                    # Reconstruct with opening statement and bullets on separate lines
+                    new_lines = []
+                    if before_first:
+                        new_lines.append(before_first)
+                    new_lines.extend(bullet_items)
+                    
+                    text_content = '\n'.join(new_lines)
+                    self.logger.info(f"📋 Split {len(bullet_items)} bullets into {len(new_lines)} lines")
+                    self.logger.debug(f"   Reconstructed text (first 300 chars): {text_content[:300]}")
+            
+            # Split by newlines to find bullet lines
+            lines = text_content.split('\n')
+            bullet_line_indices = []
+            
+            # Find which lines start with bullet marker
+            for i, line in enumerate(lines):
+                stripped = line.strip()
+                if stripped.startswith(bullet_marker):
+                    bullet_line_indices.append(i)
+                    self.logger.debug(f"Found bullet line {i}: {stripped[:50]}")
+            
+            if not bullet_line_indices:
+                self.logger.info(f"No bullet markers found in element {element_id} after processing")
+                self.logger.debug(f"All lines: {[line[:50] for line in lines if line.strip()]}")
+                return False
+            
+            # Build new text with markers removed
+            new_lines = []
+            for i, line in enumerate(lines):
+                if i in bullet_line_indices:
+                    # Remove the marker but keep the content
+                    new_line = line.replace(bullet_marker, '', 1)
+                    # If removing marker left only whitespace, preserve one space
+                    if not new_line.strip() and line.strip():
+                        new_line = ' ' + line[len(bullet_marker):].lstrip()
+                    new_lines.append(new_line)
+                else:
+                    new_lines.append(line)
+            
+            new_text = '\n'.join(new_lines)
+            
+            # Calculate bullet paragraph ranges in the NEW text (after marker removal)
+            # This is important because indices will be different after text replacement
+            new_lines_list = new_text.split('\n')
+            char_index = 0
+            bullet_ranges = []
+            
+            for line_idx, line in enumerate(new_lines_list):
+                line_length = len(line)
+                # Check if this was originally a bullet line (by comparing with original indices)
+                if line_idx in bullet_line_indices:
+                    # This is a bullet paragraph - calculate its range in new text
+                    start_idx = char_index
+                    end_idx = char_index + line_length
+                    bullet_ranges.append((start_idx, end_idx))
+                # Move to next line (add 1 for newline character)
+                char_index += line_length + 1
+            
+            if not bullet_ranges:
+                self.logger.warning(f"No bullet ranges calculated for element {element_id}")
+                return False
+            
+            # Build requests: first remove markers, then format bullets
+            requests = []
+            
+            # Step 1: Replace text with markers removed
+            if new_text != text_content:
+                # Get actual text length from the element (Google Slides may have different length)
+                # Use the actual text content length, but ensure we don't exceed it
+                actual_text_length = len(text_content.rstrip('\n\r'))
+                
+                requests.append({
+                    'deleteText': {
+                        'objectId': element_id,
+                        'textRange': {
+                            'type': 'FIXED_RANGE',
+                            'startIndex': 0,
+                            'endIndex': actual_text_length
+                        }
+                    }
+                })
+                requests.append({
+                    'insertText': {
+                        'objectId': element_id,
+                        'text': new_text,
+                        'insertionIndex': 0
+                    }
+                })
+            
+            # Step 2: Format bullets for paragraphs that were bullet lines
+            # Format each bullet paragraph using the calculated ranges
+            for start_idx, end_idx in bullet_ranges:
+                if end_idx > start_idx:
+                    requests.append({
+                        'createParagraphBullets': {
+                            'objectId': element_id,
+                            'textRange': {
+                                'type': 'FIXED_RANGE',
+                                'startIndex': start_idx,
+                                'endIndex': end_idx
+                            },
+                            'bulletPreset': 'BULLET_DISC_CIRCLE_SQUARE'
+                        }
+                    })
+            
+            self.logger.info(f"📋 Will format {len(bullet_ranges)} bullet paragraphs in element {element_id}")
+            
+            # Execute requests
+            if requests:
+                try:
+                    response = self.service.presentations().batchUpdate(
+                        presentationId=presentation_id,
+                        body={'requests': requests}
+                    ).execute()
+                    self.logger.info(f"✅ Successfully formatted bullets for element {element_id}")
+                    return True
+                except HttpError as e:
+                    self.logger.error(f"Error formatting bullets: {e}")
+                    return False
+            else:
+                return False
+                
+        except Exception as e:
+            self.logger.error(f"Error in format_bullets_for_element: {e}")
+            return False
 
     def get_or_create_uploads_folder(self):
         """Get or create the 'Uploads' folder in Google Drive root"""
