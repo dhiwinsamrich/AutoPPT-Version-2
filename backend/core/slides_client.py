@@ -974,17 +974,11 @@ class SlidesClient:
             
             # Step 1: Replace text with markers removed
             if new_text != text_content:
-                # Get actual text length from the element (Google Slides may have different length)
-                # Use the actual text content length, but ensure we don't exceed it
-                actual_text_length = len(text_content.rstrip('\n\r'))
-                
                 requests.append({
                     'deleteText': {
                         'objectId': element_id,
                         'textRange': {
-                            'type': 'FIXED_RANGE',
-                            'startIndex': 0,
-                            'endIndex': actual_text_length
+                            'type': 'ALL'
                         }
                     }
                 })

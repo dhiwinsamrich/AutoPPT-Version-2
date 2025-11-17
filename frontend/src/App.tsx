@@ -239,7 +239,7 @@ Click the copy button to copy the prompt template to the clipboard. `
             <aside className="space-y-5">
               <div className="card space-y-3">
                 <div>
-                  <p className="text-sm font-medium text-white">Prompt for the presentation</p>
+                  <p className="text-sm font-medium text-white">PROMPT</p>
                   <p className="text-xs uppercase tracking-wide text-white/40">Give us the prompt for the presentation</p>
                 </div>
                 <Textarea

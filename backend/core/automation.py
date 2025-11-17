@@ -10,7 +10,6 @@ from utils.color_manager import color_manager
 from utils.sheets_reader import SheetsReader
 from config import TEMPLATE_PRESENTATION_ID, DEFAULT_IMAGE_URL, BING_IMAGE_SEARCH_KEY, BING_IMAGE_SEARCH_ENDPOINT, LOG_LEVEL, LOG_FILE, MANUAL_CROP_DIMS
 from utils.placeholder_analyzer import analyze_presentation
-from PIL import Image
 import requests
 import os
 
@@ -242,62 +241,6 @@ class PPTAutomation:
                     slides_to_delete.add(slide_id)
         
         return slides_to_delete
-
-    def _resize_logo_to_dimensions(self, logo_path, target_dimensions, output_filename=None):
-        """Resize an existing logo to target dimensions.
-        
-        Args:
-            logo_path: Path to the original logo file
-            target_dimensions: Dict with 'width', 'height', and 'unit' keys
-            output_filename: Optional custom filename for resized logo
-            
-        Returns:
-            Path to the resized logo file, or None if error
-        """
-        try:
-            if not os.path.exists(logo_path):
-                self.logger.error(f"Logo file not found: {logo_path}")
-                return None
-            
-            if not target_dimensions or not target_dimensions.get('width') or not target_dimensions.get('height'):
-                self.logger.warning("No target dimensions provided for logo resize")
-                return logo_path
-            
-            # Convert dimensions to pixels (PT = pixels at 72 DPI, IN = inches * 72)
-            unit = target_dimensions.get('unit', 'PT')
-            if unit == 'IN':
-                target_width = int(target_dimensions['width'] * 72)
-                target_height = int(target_dimensions['height'] * 72)
-            else:  # PT (points)
-                target_width = int(target_dimensions['width'])
-                target_height = int(target_dimensions['height'])
-            
-            # Open and resize logo
-            with Image.open(logo_path) as img:
-                # Convert to RGBA if needed
-                if img.mode != 'RGBA':
-                    img = img.convert('RGBA')
-                
-                # Resize to exact dimensions
-                resized_img = img.resize((target_width, target_height), Image.Resampling.LANCZOS)
-                
-                # Generate output filename if not provided
-                if not output_filename:
-                    base_name = os.path.splitext(os.path.basename(logo_path))[0]
-                    output_dir = os.path.dirname(logo_path) or 'generated_images'
-                    output_filename = os.path.join(output_dir, f"{base_name}_{target_width}x{target_height}.png")
-                else:
-                    output_dir = os.path.dirname(output_filename) or 'generated_images'
-                    os.makedirs(output_dir, exist_ok=True)
-                
-                # Save resized logo
-                resized_img.save(output_filename, 'PNG', optimize=False)
-                self.logger.info(f"✅ Logo resized: {output_filename} ({target_width}x{target_height} px)")
-                return output_filename
-                
-        except Exception as e:
-            self.logger.error(f"Error resizing logo: {e}")
-            return None
 
     def _extract_placeholder_overrides_from_description(self, description, available_placeholders):
         """Parse generic placeholder overrides from a free-form description.
@@ -872,7 +815,6 @@ class PPTAutomation:
                     self.logger.info(f"🧾 Content map update (remaining generation): {k} = {v}")
 
         # Cache for companyLogo - reuse same logo for all variants (just resize)
-        company_logo_cache = {}  # key: company identifier, value: path to original logo
         
         # Handle u0022 quote placeholder - replace with literal quote character
         # This must be done BEFORE generating text_map to ensure it's included
@@ -882,7 +824,7 @@ class PPTAutomation:
             placeholder_text = ph.get('placeholder', '')
             name = ph.get('name', '')
             
-            self.logger.info(f"  Placeholder: '{placeholder_text}', name: '{name}', is_quote: {is_quote}")
+            # self.logger.info(f"  Placeholder: '{placeholder_text}', name: '{name}', is_quote: {is_quote}")
             
             if is_quote:
                 # For u0022, replace with actual curly quote character - add to content_map
@@ -894,17 +836,6 @@ class PPTAutomation:
                 else:
                     self.logger.warning(f"⚠️ Quote placeholder detected but not u0022: placeholder='{placeholder_text}', name='{name}'")
 
-        # Note: Hyperlinks are already processed in Step 4.1, so we skip them here
-        # Initialize variables early
-        # company_website is a parameter of this function (line 33), store it for use in nested scopes
-        try:
-            logo_website_url = company_website  # type: ignore
-        except:
-            logo_website_url = None
-        
-        # Initialize logo path variable
-        extracted_logo_path = None
-        
         # Theme generation - uses user-provided colors or company name analysis (no logo analysis)
         theme = None
         if profile == 'company' and (company_name or context):
@@ -1195,78 +1126,21 @@ class PPTAutomation:
                     placeholder_dimensions = _normalize_dims(MANUAL_CROP_DIMS.get(name))
                     self.logger.info(f"Using MANUAL_CROP_DIMS for {name}: {placeholder_dimensions}")
                 
-                # For logos, ensure we have valid dimensions
-                # Generate image - companyLogo (and variants) gets company_website parameter for logo extraction
                 is_company_logo = name.lower() == 'companylogo' or name.lower().startswith('companylogo_')
+                if is_company_logo:
+                    self.logger.info(f"⏭️ Skipping automatic generation for {name}. Provide a custom logo via overrides to replace this placeholder.")
+                    continue
                 
-                # For companyLogo variants: reuse cached logo if available, just resize to new dimensions
-                if is_company_logo and company_logo_cache:
-                    # Get cached logo path (use any cached key - they're all the same company)
-                    cached_logo_path = next(iter(company_logo_cache.values()))
-                    if cached_logo_path and os.path.exists(cached_logo_path):
-                        self.logger.info(f"♻️ Reusing cached logo for {name}, resizing to {placeholder_dimensions}")
-                        image_path = self._resize_logo_to_dimensions(cached_logo_path, placeholder_dimensions)
-                        image_crop = None
-                    else:
-                        # Cache miss or invalid path, generate new logo at large size first
-                        self.logger.info(f"Generating new logo for {name} (cache was invalid)")
-                        # Generate at large standard size first, then cache and resize
-                        large_dimensions = {'width': 1000, 'height': 1000, 'unit': 'PT'}
-                        image_path, image_crop, _ = self.content_generator.generate_image(
-                            placeholder_type=name,
-                            context=context,
-                            company_name=company_name or context,
-                            project_name=project_name or f"{context} Project",
-                            project_description=project_description,
-                            image_requirements=None,
-                            theme=theme,
-                            placeholder_dimensions=large_dimensions,
-                            company_website=company_website if is_company_logo else None
-                        )
-                        # Cache the original large logo
-                        if image_path and os.path.exists(image_path):
-                            company_logo_cache['company'] = image_path
-                            self.logger.info(f"💾 Cached original logo: {image_path}")
-                            # Now resize to actual placeholder dimensions
-                            image_path = self._resize_logo_to_dimensions(image_path, placeholder_dimensions)
-                            image_crop = None
-                else:
-                    # First companyLogo variant - generate at large size, cache it, then resize
-                    if is_company_logo:
-                        self.logger.info(f"Generating first logo for {name} - will cache for reuse")
-                        # Generate at large standard size first, then cache and resize
-                        large_dimensions = {'width': 1000, 'height': 1000, 'unit': 'PT'}
-                        image_path, image_crop, _ = self.content_generator.generate_image(
-                            placeholder_type=name,
-                            context=context,
-                            company_name=company_name or context,
-                            project_name=project_name or f"{context} Project",
-                            project_description=project_description,
-                            image_requirements=None,
-                            theme=theme,
-                            placeholder_dimensions=large_dimensions,
-                            company_website=company_website if is_company_logo else None
-                        )
-                        # Cache the original large logo
-                        if image_path and os.path.exists(image_path):
-                            company_logo_cache['company'] = image_path
-                            self.logger.info(f"💾 Cached original logo: {image_path}")
-                            # Now resize to actual placeholder dimensions
-                            image_path = self._resize_logo_to_dimensions(image_path, placeholder_dimensions)
-                            image_crop = None
-                    else:
-                        # Generate new logo (non-companyLogo)
-                        image_path, image_crop, _ = self.content_generator.generate_image(
-                            placeholder_type=name,
-                            context=context,
-                            company_name=company_name or context,
-                            project_name=project_name or f"{context} Project",
-                            project_description=project_description,
-                            image_requirements=None,
-                            theme=theme,
-                            placeholder_dimensions=placeholder_dimensions,
-                            company_website=company_website if is_company_logo else None
-                        )
+                image_path, image_crop, _ = self.content_generator.generate_image(
+                    placeholder_type=name,
+                    context=context,
+                    company_name=company_name or context,
+                    project_name=project_name or f"{context} Project",
+                    project_description=project_description,
+                    image_requirements=None,
+                    theme=theme,
+                    placeholder_dimensions=placeholder_dimensions
+                )
                 
                 if image_path and os.path.exists(image_path):
                     # Replace - exact handling for companyLogo is done automatically in replace_image_placeholder
@@ -1281,10 +1155,7 @@ class PPTAutomation:
                     
                     if success:
                         processed_images.add(name)
-                        if is_company_logo:
-                            self.logger.info(f"✅ {name} replaced with EXACT dimensions")
-                        else:
-                            self.logger.info(f"Successfully replaced image placeholder: {name}")
+                        self.logger.info(f"Successfully replaced image placeholder: {name}")
                     else:
                         self.logger.warning(f"Failed to replace {name} placeholder")
             except Exception as e:
@@ -1965,17 +1836,6 @@ class PPTAutomation:
         # Initialize final_image_map
         final_image_map = image_overrides or {}
         
-        # Initialize variables for logo extraction
-        extracted_logo_path = None
-        # company_website is a parameter of this function, store it for use in nested scopes
-        try:
-            logo_website_url = company_website  # type: ignore
-        except:
-            logo_website_url = None
-        
-        # Cache for companyLogo - reuse same logo for all variants (just resize)
-        company_logo_cache = {}  # key: company identifier, value: path to original logo
-        
         # Generate company theme if in company mode - based on user colors or company name (no logo analysis)
         theme = None
         logo_path = None
@@ -2199,6 +2059,22 @@ class PPTAutomation:
                     final_image_map.pop(placeholder_name, None)
                     continue
                 
+                image_info = final_image_map.get(placeholder_name)
+                if logical_name.lower() == 'companylogo' or logical_name.lower().startswith('companylogo_'):
+                    has_manual_logo = False
+                    if isinstance(image_info, dict):
+                        has_manual_logo = bool(image_info.get('path'))
+                    elif isinstance(image_info, str):
+                        has_manual_logo = bool(image_info)
+                    
+                    if has_manual_logo:
+                        self.logger.info(f"✅ Manual logo provided for {logical_name}; skipping automatic generation.")
+                        continue
+                    
+                    self.logger.info(f"⏭️ Skipping automatic company logo generation for {logical_name}. Provide a custom logo via overrides to replace this placeholder.")
+                    final_image_map.pop(placeholder_name, None)
+                    continue
+                
                 # Process all placeholders including companyLogo through standard flow
                 try:
                     # Find dimensions for this placeholder
@@ -2217,6 +2093,22 @@ class PPTAutomation:
                     if MANUAL_CROP_DIMS.get(logical_name):
                         placeholder_dimensions = _normalize_dims(MANUAL_CROP_DIMS.get(logical_name))
 
+                    image_info = final_image_map.get(placeholder_name)
+                    if logical_name.lower() == 'companylogo' or logical_name.lower().startswith('companylogo_'):
+                        has_manual_logo = False
+                        if isinstance(image_info, dict):
+                            has_manual_logo = bool(image_info.get('path'))
+                        elif isinstance(image_info, str):
+                            has_manual_logo = bool(image_info)
+                        
+                        if has_manual_logo:
+                            self.logger.info(f"✅ Manual logo provided for {logical_name}; skipping automatic generation.")
+                            continue
+                        
+                        self.logger.info(f"⏭️ Skipping automatic company logo generation for {logical_name}. Provide a custom logo via overrides to replace this placeholder.")
+                        final_image_map.pop(placeholder_name, None)
+                        continue
+
                     themed_image_path, themed_crop, _ = self.content_generator.generate_image(
                         placeholder_type=logical_name,
                         context=context,
@@ -2225,8 +2117,7 @@ class PPTAutomation:
                         project_description=project_description,
                         image_requirements=None,
                         theme=theme,
-                        placeholder_dimensions=placeholder_dimensions,
-                        company_website=company_website if logical_name == 'companyLogo' else None
+                        placeholder_dimensions=placeholder_dimensions
                     )
                     if themed_image_path:
                         # Store image path with dimensions for later use
@@ -2281,6 +2172,10 @@ class PPTAutomation:
             
             if is_image and placeholder_name not in [k.replace('IMAGE_', '') for k in final_image_map.keys()]:
                 try:
+                    if placeholder_name.lower() == 'companylogo' or is_company_logo_variant:
+                        self.logger.info(f"⏭️ Skipping automatic company logo generation for {placeholder_name}. Provide a custom logo via overrides to replace this placeholder.")
+                        continue
+                    
                     # Find dimensions for this placeholder
                     placeholder_dimensions = None
                     element = ph.get('element_properties', {})
@@ -2296,88 +2191,21 @@ class PPTAutomation:
                         placeholder_dimensions = _normalize_dims(MANUAL_CROP_DIMS.get(placeholder_name))
                         self.logger.info(f"Using MANUAL_CROP_DIMS for {placeholder_name}: {placeholder_dimensions}")
                     
-                    # Special handling for logos - pass company name and context
                     is_company_logo_variant = placeholder_name.lower() == 'companylogo' or placeholder_name.lower().startswith('companylogo_')
-                    if placeholder_name in ['logo', 'companyLogo'] or is_company_logo_variant:
-                        # For companyLogo variants: reuse cached logo if available, just resize to new dimensions
-                        if is_company_logo_variant and company_logo_cache:
-                            # Get cached logo path (use any cached key - they're all the same company)
-                            cached_logo_path = next(iter(company_logo_cache.values()))
-                            if cached_logo_path and os.path.exists(cached_logo_path):
-                                self.logger.info(f"♻️ Reusing cached logo for {placeholder_name}, resizing to {placeholder_dimensions}")
-                                image_path = self._resize_logo_to_dimensions(cached_logo_path, placeholder_dimensions)
-                                image_crop = None
-                            else:
-                                # Cache miss or invalid path, generate new logo at large size first
-                                self.logger.info(f"Generating new logo for {placeholder_name} (cache was invalid)")
-                                # Generate at large standard size first, then cache and resize
-                                large_dimensions = {'width': 1000, 'height': 1000, 'unit': 'PT'}
-                                image_path, image_crop, _ = self.content_generator.generate_image(
-                                    placeholder_type=placeholder_name,
-                                    context=context,
-                                    company_website=company_website if is_company_logo_variant else logo_website_url,
-                                    company_name=company_name or context,
-                                    project_name=project_name or f"{context} Project",
-                                    project_description=project_description,
-                                    image_requirements=None,
-                                    theme=theme,
-                                    placeholder_dimensions=large_dimensions
-                                )
-                                # Cache the original large logo
-                                if image_path and os.path.exists(image_path):
-                                    company_logo_cache['company'] = image_path
-                                    self.logger.info(f"💾 Cached original logo: {image_path}")
-                                    # Now resize to actual placeholder dimensions
-                                    image_path = self._resize_logo_to_dimensions(image_path, placeholder_dimensions)
-                                    image_crop = None
-                        else:
-                            # First companyLogo variant - generate at large size, cache it, then resize
-                            if is_company_logo_variant:
-                                self.logger.info(f"Generating first logo for {placeholder_name} - will cache for reuse")
-                                # Generate at large standard size first, then cache and resize
-                                large_dimensions = {'width': 1000, 'height': 1000, 'unit': 'PT'}
-                                image_path, image_crop, _ = self.content_generator.generate_image(
-                                    placeholder_type=placeholder_name,
-                                    context=context,
-                                    company_website=company_website if is_company_logo_variant else logo_website_url,
-                                    company_name=company_name or context,
-                                    project_name=project_name or f"{context} Project",
-                                    project_description=project_description,
-                                    image_requirements=None,
-                                    theme=theme,
-                                    placeholder_dimensions=large_dimensions
-                                )
-                                # Cache the original large logo
-                                if image_path and os.path.exists(image_path):
-                                    company_logo_cache['company'] = image_path
-                                    self.logger.info(f"💾 Cached original logo: {image_path}")
-                                    # Now resize to actual placeholder dimensions
-                                    image_path = self._resize_logo_to_dimensions(image_path, placeholder_dimensions)
-                                    image_crop = None
-                            else:
-                                # Generate new logo (non-companyLogo)
-                                image_path, image_crop, _ = self.content_generator.generate_image(
-                                    placeholder_type=placeholder_name,
-                                    context=context,
-                                    company_website=company_website if is_company_logo_variant else logo_website_url,
-                                    company_name=company_name or context,
-                                    project_name=project_name or f"{context} Project",
-                                    project_description=project_description,
-                                    image_requirements=None,
-                                    theme=theme,
-                                    placeholder_dimensions=placeholder_dimensions
-                                )
-                    else:
-                        image_path, image_crop, _ = self.content_generator.generate_image(
-                            placeholder_type=placeholder_name,
-                            context=context,
-                            company_name=company_name or context,
-                            project_name=project_name or f"{context} Project",
-                            project_description=project_description,
-                            image_requirements=None,
-                            theme=theme,
-                            placeholder_dimensions=placeholder_dimensions
-                        )
+                    if is_company_logo_variant:
+                        self.logger.info(f"⏭️ Skipping automatic company logo generation for {placeholder_name}. Provide a custom logo via overrides to replace this placeholder.")
+                        continue
+                    
+                    image_path, image_crop, _ = self.content_generator.generate_image(
+                        placeholder_type=placeholder_name,
+                        context=context,
+                        company_name=company_name or context,
+                        project_name=project_name or f"{context} Project",
+                        project_description=project_description,
+                        image_requirements=None,
+                        theme=theme,
+                        placeholder_dimensions=placeholder_dimensions
+                    )
                     
                     if image_path and os.path.exists(image_path):
                         # Replace - exact handling for companyLogo is done automatically in replace_image_placeholder
@@ -2389,9 +2217,7 @@ class PPTAutomation:
                             target_dimensions=placeholder_dimensions  # Pass for reference (companyLogo uses exact method)
                         )
                         if success:
-                            if is_company_logo_variant:
-                                self.logger.info(f"✅ {placeholder_name} replaced with EXACT dimensions")
-                            elif placeholder_name in ['logo']:
+                            if placeholder_name in ['logo']:
                                 dims_info = f" (dimensions: {placeholder_dimensions.get('width') if placeholder_dimensions else 'auto'}x{placeholder_dimensions.get('height') if placeholder_dimensions else 'auto'} PT)" if placeholder_dimensions else ""
                                 self.logger.info(f"✅ Successfully replaced {placeholder_name} placeholder{dims_info}")
                             else:

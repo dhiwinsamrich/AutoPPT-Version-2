@@ -97,7 +97,7 @@ Flags:
    - Generate a `content_map` for matched placeholders. Auto-fill common fields and handle `u0022` substitutions.
 3) Images
    - First generate/replace `image_1`, then `backgroundImage` leveraging `image_1` as reference.
-   - If `company_website` is provided, attempt early logo extraction to reuse across steps.
+  - `company_website` is accepted for backward compatibility but no longer triggers automatic logo extraction.
 4) Colors and emojis
    - Color placeholders filled using theme or AI-detected colors; certain `logo*` text placeholders treated as emoji text.
 5) Text and styling
@@ -110,7 +110,7 @@ Flags:
 ### Interactive Flow (`InteractiveMode`)
 Steps displayed to user:
 1) Welcome and template selection (uses `TEMPLATE_PRESENTATION_ID` if set).
-2) Company presentation mode inputs: `company_name`, optional `company_website`, `project_name`, `project_description`.
+2) Company presentation mode inputs: `company_name`, optional `company_website` (informational only), `project_name`, `project_description`.
 3) Auto-sets `output_title` to "<company> - <project>".
 4) Confirms settings, then calls `PPTAutomation.generate_presentation(...)` (or auto-detect variant when enabled).
 5) Prints success with the final Slides URL.
@@ -190,7 +190,7 @@ Notes:
 ### CLI Arguments (backend/main.py)
 - `--template-id, -t` string: Google Slides template presentation ID. Falls back to `TEMPLATE_PRESENTATION_ID`.
 - `--company` string: Company name; enables company profile flow and themeing.
-- `--company-website` string: URL for logo extraction attempts.
+- `--company-website` string: Optional informational URL (no longer triggers logo extraction).
 - `--project-name` string: Sets `{{projectName}}` where present.
 - `--proposal-type` string: Sets `{{proposalName}}`; default "Project Proposal" if missing.
 - `--interactive` flag: Launch guided flow.
@@ -308,23 +308,22 @@ Theme generation:
 - Theme JSON includes: `primary_color`, `secondary_color`, `accent_color`, `text_color`, `background_color`, font sizes/family, `theme_description`, `industry`, `brand_personality`, `target_audience`, `source`.
 
 Image generation:
-- `generate_image(placeholder_type, ..., placeholder_dimensions, reference_image_path=None, company_website=None)`:
-  - Logos: defers to `_generate_company_logo` (website extraction using `utils.scraper.extract_and_save_logo`, else Gemini-generated transparent PNG, resized with LANCZOS and processed to remove white backgrounds and padding).
-  - Non-logos: builds prompt via `_create_image_prompt` using `config/prompts_image.json` and exact placeholder dimensions; appends theme colors.
-  - Calls Gemini image model; saves to `backend/generated_images/` as JPEG for photos (quality 85, progressive) or PNG for logos (no compression). Performs smart crop+resize to exact placeholder dimensions.
+- `generate_image(placeholder_type, ..., placeholder_dimensions, reference_image_path=None)`:
+  - Uses `_create_image_prompt` and exact placeholder dimensions from `config/prompts_image.json`; appends theme colors.
+  - Calls Gemini image model; saves to `backend/generated_images/` as JPEG for photos (quality 85, progressive) or PNG when transparency is needed. Performs smart crop+resize to exact placeholder dimensions.
+  - Company logos are no longer auto-generated—provide a manual override image if you need a logo inserted.
 
 Background enhancement:
 - `enhance_image_for_background(...)` and `_generate_enhanced_image_with_gemini(...)` support converting an image to a background-conducive version at target dimensions using Gemini or PIL.
 
 Utilities:
 - `_smart_resize_image`: crop-to-fit maintaining aspect ratio, then LANCZOS resize to exact dimensions.
-- `_process_logo_for_transparency`: aggressively removes light backgrounds and trims transparent borders.
 
 ---
 
 ### Orchestration Details (core/automation.py)
 - Standard vs Auto-detect share goals but differ in how placeholders are sourced (`SlidesClient.find_placeholders` vs `analyze_presentation`).
-- Auto-detect path prioritizes `image_1` first, then `backgroundImage` with `image_1` as reference, extracts logo early if `company_website` provided, tracks `processed_images` to avoid duplicates, and merges themed styling after text replacement.
+- Auto-detect path prioritizes `image_1` first, then `backgroundImage` with `image_1` as reference, tracks `processed_images` to avoid duplicates, and merges themed styling after text replacement.
 - Both paths:
   - Auto-fill `projectName`, `companyName`, `proposalName` when present.
   - Maintain `final_image_map` to coordinate Drive uploads and element replacements, skipping items already handled (e.g., `companyLogo`).

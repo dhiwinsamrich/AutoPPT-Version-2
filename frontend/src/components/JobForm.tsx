@@ -18,13 +18,13 @@ export function JobForm({ onStartAuto, onStartCopy, onStartInteractive, busy, cl
   // Preset templates dropdown
   const templates = useMemo(() => ({
     deck: {
-      label: 'PPT Deck',
+      label: 'bd_code_',
       url: 'https://docs.google.com/presentation/d/1k7g7x8qjB4jImEXecYhY7mOLP5L4e4PH4zr5-btK4Q4/edit?slide=id.g3985ac1ea0e_0_260#slide=id.g3985ac1ea0e_0_260',
     },
-    custom: {
-      label: 'Custom URL or ID',
-      url: '',
-    },
+    // custom: {
+    //   label: 'Custom URL or ID',
+    //   url: '',
+    // },
   }), [])
 
   const [templateKey, setTemplateKey] = useState<keyof typeof templates>('deck')
@@ -46,6 +46,7 @@ Project Title: (Title of the project)
 
 Project Overview: (Overview of the project)
 
+Features:
 
 side_heading_1: (Name of the feature)
 
@@ -216,12 +217,12 @@ https://example6.com`
             options={Object.entries(templates).map(([key, t]) => ({ label: t.label, value: key }))}
           />
         </div>
-        {templateKey === 'custom' && (
+        {/* {templateKey === 'custom' && (
           <div className="md:col-span-1">
             <label className="text-xs font-medium uppercase tracking-wide text-white/50">Template ID or URL</label>
             <Input className="mt-2" placeholder="Slides URL or File ID" value={customTemplate} onChange={e => setCustomTemplate(e.target.value)} />
           </div>
-        )}
+        )} */}
         <div>
           <label className="text-xs font-medium uppercase tracking-wide text-white/50">Company Name</label>
           <Input className="mt-2" placeholder="Your Company" value={company} onChange={e => setCompany(e.target.value)} />

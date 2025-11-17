@@ -140,7 +140,7 @@ class InteractiveMode:
         print()
         
         self.company_name = self._get_input("Enter company name", required=True)
-        self.company_website = self._get_input("Enter company website URL (optional, for logo extraction)", required=False)
+        self.company_website = self._get_input("Enter company website URL (optional, informational)", required=False)
         if self.company_website:
             print(f"✅ Logo will be extracted from: {self.company_website}")
         else:

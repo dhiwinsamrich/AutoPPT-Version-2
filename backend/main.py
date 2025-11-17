@@ -31,7 +31,7 @@ Examples:
     
     # Content arguments
     parser.add_argument('--company', type=str, help='Company name (enables company profile mode)')
-    parser.add_argument('--company-website', type=str, help='Company website URL (for logo extraction)')
+    parser.add_argument('--company-website', type=str, help='Company website URL (optional, informational)')
     parser.add_argument('--project-name', type=str, help='Project name for {{projectName}}')
     parser.add_argument('--proposal-type', type=str, help='Proposal type for {{proposalName}}')
     
