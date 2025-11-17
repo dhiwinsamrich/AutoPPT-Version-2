@@ -282,8 +282,8 @@
       "type": "PARAGRAPH",
       "description": "Explanation paragraph for Heading_1 - detailed description of the main aspect",
       "content_requirements": {
-        "min_words": 15,
-        "max_words": 20,
+        "min_words": 10,
+        "max_words": 15,  
         "style": "explanatory, detailed, professional, supporting"
       },
       "auto_fill": {
@@ -488,8 +488,8 @@
       "type": "PARAGRAPH",
       "description": "Explanation paragraph for Heading_2 - detailed description of the second aspect",
       "content_requirements": {
-        "min_words": 15,
-        "max_words": 20,
+        "min_words": 10,
+        "max_words": 15,
         "style": "explanatory, detailed, professional, supporting"
       },
       "auto_fill": {
@@ -504,8 +504,8 @@
       "type": "PARAGRAPH",
       "description": "Explanation paragraph for Heading_3 - detailed description of the third aspect",
       "content_requirements": {
-        "min_words": 15,
-        "max_words": 20,
+        "min_words": 10,
+        "max_words": 15,
         "style": "explanatory, detailed, professional, supporting"
       },
       "auto_fill": {
@@ -520,8 +520,8 @@
       "type": "PARAGRAPH",
       "description": "Explanation paragraph for Heading_4 - detailed description of the fourth aspect",
       "content_requirements": {
-        "min_words": 15,
-        "max_words": 20,
+        "min_words": 10,
+        "max_words": 15,
         "style": "explanatory, detailed, professional, supporting"
       },
       "auto_fill": {
@@ -536,8 +536,8 @@
       "type": "PARAGRAPH",
       "description": "Explanation paragraph for Heading_5 - detailed description of the fifth aspect",
       "content_requirements": {
-        "min_words": 15,
-        "max_words": 20,
+        "min_words": 10,
+        "max_words": 15,
         "style": "explanatory, detailed, professional, supporting"
       },
       "auto_fill": {
@@ -552,8 +552,8 @@
       "type": "PARAGRAPH",
       "description": "Explanation paragraph for Heading_6 - detailed description of the sixth aspect",
       "content_requirements": {
-        "min_words": 15,
-        "max_words": 20,
+        "min_words": 10,
+        "max_words": 15,
         "style": "explanatory, detailed, professional, supporting"
       },
       "auto_fill": {
