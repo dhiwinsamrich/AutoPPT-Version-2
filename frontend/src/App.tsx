@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useRef } from 'react'
+import { useEffect, useMemo, useState, useRef, useCallback } from 'react'
 import { JobForm } from './components/JobForm'
 import { SuccessPage } from './components/SuccessPage'
 import { ProgressBar } from './components/ProgressBar'
@@ -18,48 +18,52 @@ export default function App() {
   const getFormValuesRef = useRef<(() => any) | null>(null)
   const [copied, setCopied] = useState(false)
   const [showToast, setShowToast] = useState(false)
+  const [formValuesSnapshot, setFormValuesSnapshot] = useState<any | null>(null)
+  const [validationMessage, setValidationMessage] = useState<string | null>(null)
 
-  const promptTemplate = `Prompt template :
+  const handleFormValuesReady = useCallback((getFormValues: () => any) => {
+    getFormValuesRef.current = getFormValues
+    setFormValuesSnapshot(getFormValues())
+  }, [])
 
-Project Title: (Title of the project)
+  const requiredFieldsComplete = useMemo(() => {
+    if (!formValuesSnapshot) return false
+    const { templateKey, company, project, proposalType, sheetsId } = formValuesSnapshot
+    const requiredStrings = [templateKey, company, project, proposalType, sheetsId, projectDescription]
+    return requiredStrings.every((value) => typeof value === 'string' && value.trim().length > 0)
+  }, [formValuesSnapshot, projectDescription])
+
+  useEffect(() => {
+    if (requiredFieldsComplete) {
+      setValidationMessage(null)
+    }
+  }, [requiredFieldsComplete])
+
+  const ensureRequiredFields = () => {
+    if (!requiredFieldsComplete) {
+      setValidationMessage('Please complete all required fields and the prompt before generating.')
+      return false
+    }
+    return true
+  }
+
+  const promptTemplate = `Project Title: (Title of the project)
 
 Project Overview: (Overview of the project)
 
-Features:
+Features: (Maximum 15 features)
 
-side_heading_1: (Name of the feature)
+Feature 1: (Name of the feature)
 
-side_heading_2: (Name of the feature)
+Feature 2: (Name of the feature)
 
-side_heading_3: (Name of the feature)
+Feature 3: (Name of the feature)
 
-side_heading_4: (Name of the feature)
+Feature 4: (Name of the feature)
 
-side_heading_5: (Name of the feature)
+Feature 5: (Name of the feature)
 
-side_heading_6: (Name of the feature)
-
-side_heading_7: (Name of the feature)
-
-side_heading_8: (Name of the feature)
-
-side_heading_9: (Name of the feature)
-
-side_heading_10: (Name of the feature)
-
-side_heading_11: (Name of the feature)
-
-side_heading_12: (Name of the feature)
-
-side_heading_13: (Name of the feature)
-
-side_heading_14: (Name of the feature)
-
-side_heading_15: (Name of the feature)
-
-
-
-Follow Reference Links:
+Follow Reference Links: (Maximum 6 links)
 
 https://example1.com
 https://example2.com
@@ -247,14 +251,13 @@ https://example6.com`
           />
         ) : (
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-            <JobForm
+        <JobForm
               className="h-full"
               busy={busy}
               projectDescription={projectDescription}
-              onFormValuesReady={(getFormValues) => {
-                getFormValuesRef.current = getFormValues
-              }}
+            onFormValuesReady={handleFormValuesReady}
               onStartAuto={async (payload) => {
+            if (!ensureRequiredFields()) return
                 setJobId(null)
                 setStatus('queued')
                 setLogs([])
@@ -264,6 +267,7 @@ https://example6.com`
                 setJobId(job_id)
               }}
               onStartCopy={async (payload) => {
+            if (!ensureRequiredFields()) return
                 setJobId(null)
                 setStatus('queued')
                 setLogs([])
@@ -273,6 +277,7 @@ https://example6.com`
                 setJobId(job_id)
               }}
               onStartInteractive={async (payload) => {
+            if (!ensureRequiredFields()) return
                 setJobId(null)
                 setStatus('queued')
                 setLogs([])
@@ -348,8 +353,10 @@ https://example6.com`
 
               <div className="card space-y-3">
                 <div>
-                  <p className="text-sm font-medium text-white">PROMPT</p>
-                  <p className="text-xs uppercase tracking-wide text-white/40">Give us the prompt for the presentation</p>
+                  <p className="text-sm font-medium text-white flex items-center gap-2">
+                    PROMPT <span className="text-xs text-red-400">*</span>
+                  </p>
+                  <p className="text-xs uppercase tracking-wide text-white/40">This prompt content is required for accurate PPT generation.</p>
                 </div>
                 <Textarea
                   rows={10}
@@ -362,9 +369,10 @@ https://example6.com`
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-xs text-white/40"></p>
                 <Button
-                  disabled={busy}
+                  disabled={busy || !requiredFieldsComplete}
                   onClick={() => {
                     if (!getFormValuesRef.current) return
+                    if (!ensureRequiredFields()) return
                     
                     const formValues = getFormValuesRef.current()
                     const { templateKey, customTemplate, company, project, proposalType, companyWebsite, sheetsId, sheetsRange, primaryColor, secondaryColor, accentColor, templates } = formValues
@@ -413,6 +421,9 @@ https://example6.com`
                 >
                   {busy ? 'Working…' : 'Generate presentation'}
                 </Button>
+                {validationMessage && (
+                  <p className="text-xs text-rose-300">{validationMessage}</p>
+                )}
               </div>
 
               {resultUrl && status !== 'succeeded' && (

@@ -40,47 +40,23 @@ export function JobForm({ onStartAuto, onStartCopy, onStartInteractive, busy, cl
   const [accentColor, setAccentColor] = useState('#ffffff')
   const [copied, setCopied] = useState(false)
 
-  const promptTemplate = `Prompt template :
-
-Project Title: (Title of the project)
+  const promptTemplate = `Project Title: (Title of the project)
 
 Project Overview: (Overview of the project)
 
-Features:
+Features: (Maximum 15 features)
 
-side_heading_1: (Name of the feature)
+Feature 1: (Name of the feature)
 
-side_heading_2: (Name of the feature)
+Feature 2: (Name of the feature)
 
-side_heading_3: (Name of the feature)
+Feature 3: (Name of the feature)
 
-side_heading_4: (Name of the feature)
+Feature 4: (Name of the feature)
 
-side_heading_5: (Name of the feature)
+Feature 5: (Name of the feature)
 
-side_heading_6: (Name of the feature)
-
-side_heading_7: (Name of the feature)
-
-side_heading_8: (Name of the feature)
-
-side_heading_9: (Name of the feature)
-
-side_heading_10: (Name of the feature)
-
-side_heading_11: (Name of the feature)
-
-side_heading_12: (Name of the feature)
-
-side_heading_13: (Name of the feature)
-
-side_heading_14: (Name of the feature)
-
-side_heading_15: (Name of the feature)
-
-
-
-Follow Reference Links:
+Follow Reference Links: (Maximum 6 links)
 
 https://example1.com
 https://example2.com
@@ -209,7 +185,9 @@ https://example6.com`
 
       <div className="grid gap-4 md:grid-cols-2">
         <div className="md:col-span-1">
-          <label className="text-xs font-medium uppercase tracking-wide text-white/50">Template</label>
+          <label className="text-xs font-medium uppercase tracking-wide text-white/50">
+            Template <span className="text-red-400">*</span>
+          </label>
           <Select
             className="mt-2"
             value={templateKey}
@@ -224,23 +202,31 @@ https://example6.com`
           </div>
         )} */}
         <div>
-          <label className="text-xs font-medium uppercase tracking-wide text-white/50">Company Name</label>
-          <Input className="mt-2" placeholder="Your Company" value={company} onChange={e => setCompany(e.target.value)} />
+          <label className="text-xs font-medium uppercase tracking-wide text-white/50">
+            Client / Organization Name <span className="text-red-400">*</span>
+          </label>
+          <Input className="mt-2" placeholder="Client / Organization Name (e.g. BMW, Woodland, etc.)" value={company} onChange={e => setCompany(e.target.value)} />
         </div>
         <div>
-          <label className="text-xs font-medium uppercase tracking-wide text-white/50">Project Name</label>
-          <Input className="mt-2" placeholder="Your Project" value={project} onChange={e => setProject(e.target.value)} />
+          <label className="text-xs font-medium uppercase tracking-wide text-white/50">
+            Presentation Title <span className="text-red-400">*</span>
+          </label>
+          <Input className="mt-2" placeholder="Presentation Title (e.g. Website Redesign, Website Development, etc.)" value={project} onChange={e => setProject(e.target.value)} />
         </div>
         <div>
-          <label className="text-xs font-medium uppercase tracking-wide text-white/50">Proposal Type</label>
-          <Input className="mt-2" placeholder="Project Proposal" value={proposalType} onChange={e => setProposalType(e.target.value)} />
+          <label className="text-xs font-medium uppercase tracking-wide text-white/50">
+            Proposal Type <span className="text-red-400">*</span>
+          </label>
+          <Input className="mt-2" placeholder="Proposal Type (e.g. Project Proposal, Development Proposal, etc.)" value={proposalType} onChange={e => setProposalType(e.target.value)} />
         </div>
         <div>
           <label className="text-xs font-medium uppercase tracking-wide text-white/50">Company Website</label>
           <Input className="mt-2" placeholder="https://example.com" value={companyWebsite} onChange={e => setCompanyWebsite(e.target.value)} />
         </div>
         <div>
-          <label className="text-xs font-medium uppercase tracking-wide text-white/50">Effort Estimation Sheet Link</label>
+          <label className="text-xs font-medium uppercase tracking-wide text-white/50">
+            Effort Estimation Sheet Link <span className="text-red-400">*</span>
+          </label>
           <Input
             className="mt-2"
             placeholder="https://docs.google.com/spreadsheets/d/... or Sheet ID"
@@ -249,8 +235,15 @@ https://example6.com`
           />
         </div>
       </div>
-      <div className="flex items-center font-medium justify-between gap-3 text-sm text-white/60">
-      Choose the color scheme for the presentation.
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">Theme palette</p>
+          <p className="text-sm text-white/70">Choose the brand colors you want on every slide.</p>
+        </div>
+        <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70">
+          🎨
+          <span>Syncs with prompt template</span>
+        </span>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
         <div>

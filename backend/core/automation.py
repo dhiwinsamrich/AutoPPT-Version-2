@@ -94,14 +94,13 @@ class PPTAutomation:
             return tuple(set1_values)
     
     def _extract_side_headings_from_description(self, description):
-        """Parse project description text for side_heading_1..15 overrides.
+        """Parse project description prompt for Feature 1..15 overrides.
 
         Expected formats (case-insensitive):
-        - side_heading_1: Value
-        - side-heading-2 - Value
-        - Side_Heading_3: Value
-        - side_heading_3: Value
-        - side heading 3 Value (last variant requires a colon or dash to be safe)
+        - Feature 1: Value
+        - Feature-2 - Value
+        - Feature_3: Value
+        - Feature4: Value (colon or dash preferred)
 
         Returns dict like { 'side_Heading_1': 'Value', ... }
         """
@@ -110,7 +109,7 @@ class PPTAutomation:
         if not description:
             return overrides
         lines = str(description).splitlines()
-        pattern = re.compile(r"^\s*side[\s_\-]?heading[\s_\-]?([1-9]|1[0-5])\s*[:\-]\s*(.+)$", re.IGNORECASE)
+        pattern = re.compile(r"^\s*feature[\s_\-]?([1-9]|1[0-5])\s*[:\-]\s*(.+)$", re.IGNORECASE)
         for line in lines:
             m = pattern.match(line.strip())
             if not m:
