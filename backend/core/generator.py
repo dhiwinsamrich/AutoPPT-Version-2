@@ -1322,6 +1322,8 @@ Examples:
  Project Description: {project_description}
  Context: {context}
  
+ GLOBAL STYLE RULE: Whenever you need the possessive form of any company or project name, if the name already ends with the letter 's', do NOT add another 's'—use only an apostrophe (e.g., AIR 7 SEAS' journey). Apply this rule consistently across every piece of generated content.
+ 
 {preset_section}Generate ALL the following content in a single JSON response. Be specific, professional, and engaging:
 
  {{
@@ -1387,10 +1389,10 @@ Examples:
      "d_p": "Return only a percentage (e.g., '20%') for Deployment/Production budget share based on effort estimation.",
      
     "conclusion": "Return only the word 'Conclusion'",
-    "conclusion_para": "Write a powerful conclusion in professional PPT deck style for '{project_name}' and {{company_name}}. Based on '{{project_description}}', follow this structure: (1) Opening statement (40-50 words): 'As we embark on [company]'s journey to build [project], we're excited to unite strategy, technology and a deep understanding of the [domain/ecosystem]. This partnership represents the start of a [adjectives] digital platform built for excellence through its:' (2) Then list EXACTLY 4-5 major outcomes/takeaways as bullet points. Format: Start each with '* ' (asterisk + space), not '-'. Each bullet should be 5-8 words capturing key features/architecture/capabilities. Examples: '* Multi-Sport CMS Architecture' or '* Dynamic Homepage, Fixtures & Results'. Use industry-specific terminology. Total length: 100-120 words including bullets. Ensure bullets directly reflect core project features from description.",
+    "conclusion_para": "Write a powerful conclusion in professional PPT deck style for '{project_name}' and {{company_name}}. Based on '{{project_description}}', follow this structure: (1) Opening statement (40-50 words): 'As we embark on bdcode_'s journey to build [project], we're excited to unite strategy, technology and a deep understanding of the [domain/ecosystem]. This partnership represents the start of a [adjectives] digital platform built for excellence through its:' (2) Then list EXACTLY 4-5 major outcomes/takeaways as bullet points. Format: Start each with '* ' (asterisk + space), not '-'. Each bullet should be 5-8 words capturing key features/architecture/capabilities. Examples: '* Multi-Sport CMS Architecture' or '* Dynamic Homepage, Fixtures & Results'. Use industry-specific terminology. Total length: 100-120 words including bullets. Ensure bullets directly reflect core project features from description.",
     "our": "Return only the word 'Our'",
     "process": "Return only the word 'Process'",
-    "our_process_desc": "Write a comprehensive process description (70-85 words) tailored to '{project_name}' and '{{project_description}}'. Structure: (1) Opening statement about your company's approach (e.g., 'At [company], we follow a structured, collaborative process to bring [project] to life'), (2) List key phases: discovery/research, design, development, QA/testing, (3) Mention alignment with real-world workflows, (4) Closing statement about what the approach ensures (scalability, accuracy, performance), (5) End with final outcome: 'empowering [users] with a seamless [platform type] built for growth, engagement and long-term success.' Use professional PPT language with industry-specific terminology.",
+    "our_process_desc": "Write a comprehensive process description (70-85 words) tailored to '{project_name}' and '{{project_description}}'. Structure: (1) Opening statement about your company's approach (e.g., 'At bdcode_, we follow a structured, collaborative process to bring [project] to life'), (2) List key phases: discovery/research, design, development, QA/testing, (3) Mention alignment with real-world workflows, (4) Closing statement about what the approach ensures (scalability, accuracy, performance), (5) End with final outcome: 'empowering [users] with a seamless [platform type] built for growth, engagement and long-term success.' Use professional PPT language with industry-specific terminology.",
      "budget": "Return only the word 'Budget'",
      "days": "Return the number of days along with the word 'days' (e.g., '28 days', '30 days', '45 days')",
      "project_timeline": "Return only the words 'Project Timeline'",
