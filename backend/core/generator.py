@@ -1403,12 +1403,12 @@ Examples:
      "diverse_range_of_users": "Return only the words 'Diverse range of users'",
     "target_audience": "Return only the words 'Target Audience'",
     
-    "breakup_1": "Based on '{{project_description}}' and {{project_category}}, identify the PRIMARY target audience segment (2-4 words). Consider who will use/benefit most from this project. Examples: For sports/tournament projects: 'Players & Teams', 'Tournament Organisers', 'Sports Enthusiasts'. For business/commercial: 'Commercial Property Owners', 'Business Clients', 'Enterprise Leaders'. For beauty/wellness: 'Professionals & Industry Experts', 'Beauty & Wellness Brands'. Output only the segment label.",
-    "breakup_2": "Based on '{{project_description}}', identify a SECOND distinct audience segment (2-4 words), different from breakup_1. Focus on another key user group or stakeholder type. Output only the segment label.",
-    "breakup_3": "Based on '{{project_description}}', identify a THIRD distinct audience segment (2-4 words). Focus on secondary users, enthusiasts, or community members. Output only the segment label.",
-    "breakup_4": "Based on '{{project_description}}', identify a FOURTH distinct audience segment (2-4 words). Focus on administrative, support, or operational users. Output only the segment label.",
-    "breakup_5": "Based on '{{project_description}}', identify a FIFTH distinct audience segment (2-4 words). Focus on content consumers, viewers, or passive participants. Output only the segment label.",
-    "breakup_6": "Based on '{{project_description}}', identify a SIXTH distinct audience segment (2-4 words). Focus on partners, sponsors, or external stakeholders. Output only the segment label.",
+    "breakup_1": "Using '{{project_description}}', {company_name}, and {{project_category}}, identify the PRIMARY audience/customer segment (3-6 words) most likely to request or benefit from this initiative. Make it industry-specific and persona-ready (e.g., 'Players & Teams', 'Importers & Exporters'). Output only the segment label.",
+    "breakup_2": "Identify a SECOND distinct segment (3-6 words) representing another high-value persona with different motivations. Tie the label to the business context (e.g., 'Tournament Organisers', 'Fashion-forward Millennials'). Output only the segment label.",
+    "breakup_3": "Identify a THIRD distinct segment (3-6 words) that broadens reach—secondary stakeholders, adjacent buyers, or influencer communities (e.g., 'Sports Enthusiasts', 'Collectors & Hobbyists'). Output only the segment label.",
+    "breakup_4": "Identify a FOURTH distinct segment (3-6 words) covering operational, partner, or channel audiences critical to delivery (e.g., 'Coaches & Support Staff', 'Retail Chains'). Output only the segment label.",
+    "breakup_5": "Identify a FIFTH distinct segment (3-6 words) focusing on niche communities, premium buyers, or specialty groups relevant to the company (e.g., 'Young Athletes & Students', 'Silk Connoisseurs'). Output only the segment label.",
+    "breakup_6": "Identify a SIXTH distinct segment (3-6 words) capturing broader consumers, sponsors, or ecosystem partners (e.g., 'Sponsors & Partners', 'General Consumers'). Output only the segment label.",
     
     "b1": "Return a realistic percentage for PRIMARY audience segment (typically 25-35%). Consider importance and usage volume. Output format: '30%'",
     "b2": "Return a realistic percentage for SECOND audience segment (typically 15-25%). Should be lower than b1. Output format: '20%'",

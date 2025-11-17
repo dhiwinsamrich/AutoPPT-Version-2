@@ -19,8 +19,55 @@ export default function App() {
   const [copied, setCopied] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
-  const promptTemplate = `Prompt template : (Required)
-Click the copy button to copy the prompt template to the clipboard. `
+  const promptTemplate = `Prompt template :
+
+Project Title: (Title of the project)
+
+Project Overview: (Overview of the project)
+
+Features:
+
+side_heading_1: (Name of the feature)
+
+side_heading_2: (Name of the feature)
+
+side_heading_3: (Name of the feature)
+
+side_heading_4: (Name of the feature)
+
+side_heading_5: (Name of the feature)
+
+side_heading_6: (Name of the feature)
+
+side_heading_7: (Name of the feature)
+
+side_heading_8: (Name of the feature)
+
+side_heading_9: (Name of the feature)
+
+side_heading_10: (Name of the feature)
+
+side_heading_11: (Name of the feature)
+
+side_heading_12: (Name of the feature)
+
+side_heading_13: (Name of the feature)
+
+side_heading_14: (Name of the feature)
+
+side_heading_15: (Name of the feature)
+
+
+
+Follow Reference Links:
+
+https://example1.com
+https://example2.com
+https://example3.com
+https://example4.com
+https://example5.com
+https://example6.com`
+
 
   const handleCopyTemplate = async () => {
     console.log('Copy button clicked, template length:', promptTemplate.length)
@@ -238,6 +285,68 @@ Click the copy button to copy the prompt template to the clipboard. `
 
             <aside className="space-y-5">
               <div className="card space-y-3">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-red-500 flex-shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <p className="text-xs text-white/60">
+                      Click here to copy the Prompt Template for PPT generation (Required for best results)
+                    </p>
+                  </div>
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    onClick={handleCopyTemplate}
+                    className="h-8 px-3 text-xs"
+                  >
+                    {copied ? (
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M8 16h8m-8-4h8m2 8H6a2 2 0 01-2-2V6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v10a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    )}
+                  </Button>
+                </div>
+              </div>
+
+              <div className="card space-y-3">
                 <div>
                   <p className="text-sm font-medium text-white">PROMPT</p>
                   <p className="text-xs uppercase tracking-wide text-white/40">Give us the prompt for the presentation</p>
@@ -251,7 +360,7 @@ Click the copy button to copy the prompt template to the clipboard. `
               </div>
 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-xs text-white/40">You can tweak any details later directly inside Google Slides.</p>
+                <p className="text-xs text-white/40"></p>
                 <Button
                   disabled={busy}
                   onClick={() => {

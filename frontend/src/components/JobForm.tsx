@@ -18,7 +18,7 @@ export function JobForm({ onStartAuto, onStartCopy, onStartInteractive, busy, cl
   // Preset templates dropdown
   const templates = useMemo(() => ({
     deck: {
-      label: 'bd_code_',
+      label: 'bdcode_',
       url: 'https://docs.google.com/presentation/d/1k7g7x8qjB4jImEXecYhY7mOLP5L4e4PH4zr5-btK4Q4/edit?slide=id.g3985ac1ea0e_0_260#slide=id.g3985ac1ea0e_0_260',
     },
     // custom: {
@@ -249,7 +249,9 @@ https://example6.com`
           />
         </div>
       </div>
-
+      <div className="flex items-center font-medium justify-between gap-3 text-sm text-white/60">
+      Choose the color scheme for the presentation.
+      </div>
       <div className="grid gap-4 md:grid-cols-3">
         <div>
           <label className="text-xs font-medium uppercase tracking-wide text-white/50">Primary Color</label>
@@ -349,47 +351,9 @@ https://example6.com`
             />
           </svg>
           <p className="text-xs text-white/60">
-            Click here to copy the Prompt Template for PPT generation
+            Note: Prompt needs to be in the format of the prompt template to produce the best results.
           </p>
         </div>
-        <Button
-          type="button"
-          variant="secondary"
-          onClick={handleCopyTemplate}
-          className="h-8 px-3 text-xs"
-        >
-          {copied ? (
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          ) : (
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-              />
-            </svg>
-          )}
-        </Button>
       </div>
     </div>
     </>

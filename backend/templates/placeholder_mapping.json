@@ -1114,12 +1114,18 @@
     },
     "breakup_1": {
       "type": "TEXT",
-      "description": "text placeholder for breakup_1",
+      "description": "Primary audience/customer segment label (2-4 words) e.g., 'Importers/Exporters' or 'Traditional Outfit Seekers'.",
       "content_requirements": {
-        "min_words": 2,
-        "max_words": 4,
-        "style": "professional"
+        "min_words": 3,
+        "max_words": 6,
+        "style": "professional",
+        "notes": "Highlight the core persona most likely to seek the company's offering; use real-world nouns, not generic terms."
       },
+      "examples": [
+        "Importers/Exporters",
+        "Traditional Outfit Seekers",
+        "Automotive Enthusiasts"
+      ],
       "auto_fill": {
         "use_project_name": true,
         "use_company_name": true,
@@ -1131,7 +1137,7 @@
       "type": "TEXT",
       "description": "text placeholder for b2",
       "content_requirements": {
-        "min_words": 2,
+        "min_words": 3,
         "max_words": 6,
         "style": "professional"
       },
@@ -1144,12 +1150,18 @@
     },
     "breakup_2": {
       "type": "TEXT",
-      "description": "text placeholder for breakup_2",
+      "description": "Second audience segment with a different motivation (e.g., 'Manufacturers', 'Fashion-forward Millennials').",
       "content_requirements": {
-        "min_words": 2,
-        "max_words": 4,
-        "style": "professional"
+        "min_words": 3,
+        "max_words": 6,
+        "style": "professional",
+        "notes": "Ensure this cohort is distinct from breakup_1 and reflects a clear persona."
       },
+      "examples": [
+        "Manufacturers",
+        "Fashion-forward Millennials",
+        "Parents & Gift Shoppers"
+      ],
       "auto_fill": {
         "use_project_name": true,
         "use_company_name": true,
@@ -1174,12 +1186,18 @@
     },
     "breakup_3": {
       "type": "TEXT",
-      "description": "text placeholder for breakup_3",
+      "description": "Third audience segment covering adjacent buyers or enthusiast communities (e.g., 'E-Commerce Platforms', 'Collectors & Hobbyists').",
       "content_requirements": {
-        "min_words": 2,
-        "max_words": 4,
-        "style": "professional"
+        "min_words": 3,
+        "max_words": 6,
+        "style": "professional",
+        "notes": "Think of segments that broaden reach beyond the core buyer."
       },
+      "examples": [
+        "E-Commerce Platforms",
+        "Collectors & Hobbyists",
+        "Scale Model Enthusiasts"
+      ],
       "auto_fill": {
         "use_project_name": true,
         "use_company_name": true,
@@ -1204,12 +1222,18 @@
     },
     "breakup_4": {
       "type": "TEXT",
-      "description": "text placeholder for breakup_4",
+      "description": "Fourth audience segment for partners, channels, or operational stakeholders (e.g., 'Retail Chains', 'Parents & Gift Shoppers').",
       "content_requirements": {
-        "min_words": 2,
-        "max_words": 4,
-        "style": "professional"
+        "min_words": 3,
+        "max_words": 6,
+        "style": "professional",
+        "notes": "Emphasize groups that influence delivery or distribution."
       },
+      "examples": [
+        "Retail Chains",
+        "Parents & Gift Shoppers",
+        "Logistics Companies"
+      ],
       "auto_fill": {
         "use_project_name": true,
         "use_company_name": true,
@@ -1234,12 +1258,18 @@
     },
     "breakup_5": {
       "type": "TEXT",
-      "description": "text placeholder for breakup_5",
+      "description": "Fifth audience segment highlighting niche or premium buyers (e.g., 'Silk Connoisseurs', 'Luxury Fashion Consumers').",
       "content_requirements": {
-        "min_words": 2,
-        "max_words": 4,
-        "style": "professional"
+        "min_words": 3,
+        "max_words": 6,
+        "style": "professional",
+        "notes": "Spotlight specialty communities or high-intent buyers."
       },
+      "examples": [
+        "Silk Connoisseurs",
+        "Luxury Fashion Consumers",
+        "Toy Enthusiasts"
+      ],
       "auto_fill": {
         "use_project_name": true,
         "use_company_name": true,
@@ -1264,12 +1294,18 @@
     },
     "breakup_6": {
       "type": "TEXT",
-      "description": "text placeholder for breakup_6",
+      "description": "Sixth audience segment for broader consumers, ecosystem partners, or observers (e.g., 'General Consumers', 'Global Sponsors').",
       "content_requirements": {
-        "min_words": 2,
-        "max_words": 4,
-        "style": "professional"
+        "min_words": 3,
+        "max_words": 6,
+        "style": "professional",
+        "notes": "Use this slot for expansive reach groups completing the composition."
       },
+      "examples": [
+        "General Consumers",
+        "Global Sponsors",
+        "Regional Distributors"
+      ],
       "auto_fill": {
         "use_project_name": true,
         "use_company_name": true,
