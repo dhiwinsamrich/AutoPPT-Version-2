@@ -683,8 +683,8 @@
       "type": "PARAGRAPH",
       "description": "Project scope description - comprehensive overview of features and functionality",
       "content_requirements": {
-        "min_words": 50,
-        "max_words": 80,
+        "min_words": 30,
+        "max_words": 40,
         "style": "professional, comprehensive, detailed"
       },
       "auto_fill": {
@@ -1116,8 +1116,8 @@
       "type": "TEXT",
       "description": "Primary audience/customer segment label (2-4 words) e.g., 'Importers/Exporters' or 'Traditional Outfit Seekers'.",
       "content_requirements": {
-        "min_words": 3,
-        "max_words": 6,
+        "min_words": 2,
+        "max_words": 4,
         "style": "professional",
         "notes": "Highlight the core persona most likely to seek the company's offering; use real-world nouns, not generic terms."
       },
@@ -1150,10 +1150,10 @@
     },
     "breakup_2": {
       "type": "TEXT",
-      "description": "Second audience segment with a different motivation (e.g., 'Manufacturers', 'Fashion-forward Millennials').",
+      "description": "Second audience segment with a different motivation (2-4 words, e.g., 'Manufacturers', 'Fashion-forward Millennials').",
       "content_requirements": {
-        "min_words": 3,
-        "max_words": 6,
+        "min_words": 2,
+        "max_words": 4,
         "style": "professional",
         "notes": "Ensure this cohort is distinct from breakup_1 and reflects a clear persona."
       },
@@ -1186,10 +1186,10 @@
     },
     "breakup_3": {
       "type": "TEXT",
-      "description": "Third audience segment covering adjacent buyers or enthusiast communities (e.g., 'E-Commerce Platforms', 'Collectors & Hobbyists').",
+      "description": "Third audience segment covering adjacent buyers or enthusiast communities (2-4 words, e.g., 'E-Commerce Platforms', 'Collectors & Hobbyists').",
       "content_requirements": {
-        "min_words": 3,
-        "max_words": 6,
+        "min_words": 2,
+        "max_words": 4,
         "style": "professional",
         "notes": "Think of segments that broaden reach beyond the core buyer."
       },
@@ -1222,10 +1222,10 @@
     },
     "breakup_4": {
       "type": "TEXT",
-      "description": "Fourth audience segment for partners, channels, or operational stakeholders (e.g., 'Retail Chains', 'Parents & Gift Shoppers').",
+      "description": "Fourth audience segment for partners, channels, or operational stakeholders (2-4 words, e.g., 'Retail Chains', 'Parents & Gift Shoppers').",
       "content_requirements": {
-        "min_words": 3,
-        "max_words": 6,
+        "min_words": 2,
+        "max_words": 4,
         "style": "professional",
         "notes": "Emphasize groups that influence delivery or distribution."
       },
@@ -1258,10 +1258,10 @@
     },
     "breakup_5": {
       "type": "TEXT",
-      "description": "Fifth audience segment highlighting niche or premium buyers (e.g., 'Silk Connoisseurs', 'Luxury Fashion Consumers').",
+      "description": "Fifth audience segment highlighting niche or premium buyers (2-4 words, e.g., 'Silk Connoisseurs', 'Luxury Fashion Consumers').",
       "content_requirements": {
-        "min_words": 3,
-        "max_words": 6,
+        "min_words": 2,
+        "max_words": 4,
         "style": "professional",
         "notes": "Spotlight specialty communities or high-intent buyers."
       },
@@ -1294,10 +1294,10 @@
     },
     "breakup_6": {
       "type": "TEXT",
-      "description": "Sixth audience segment for broader consumers, ecosystem partners, or observers (e.g., 'General Consumers', 'Global Sponsors').",
+      "description": "Sixth audience segment for broader consumers, ecosystem partners, or observers (2-4 words, e.g., 'General Consumers', 'Global Sponsors').",
       "content_requirements": {
-        "min_words": 3,
-        "max_words": 6,
+        "min_words": 2,
+        "max_words": 4,
         "style": "professional",
         "notes": "Use this slot for expansive reach groups completing the composition."
       },
