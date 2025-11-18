@@ -852,19 +852,19 @@ class ContentGenerator:
             prompt = f"Generate appropriate content for {placeholder_type} related to {project_name} by {company_name}" \
                      f". Context: {project_description or context}. Output only the required text."
         
-        try:
-            # Determine appropriate token limit based on placeholder type
-            max_tokens = 180  # default
-            if placeholder_type == 'conclusion_para':
-                max_tokens = 300  # Allow more tokens for conclusion with bullets
-            elif placeholder_type == 'our_process_desc':
-                max_tokens = 300  # Also increase for process description
+        # try:
+        #     # Determine appropriate token limit based on placeholder type
+        #     max_tokens = 180  # default
+        #     if placeholder_type == 'conclusion_para':
+        #         max_tokens = 300  # Allow more tokens for conclusion with bullets
+        #     elif placeholder_type == 'our_process_desc':
+        #         max_tokens = 300  # Also increase for process description
 
             model = genai.GenerativeModel(self.model_name)
             response = model.generate_content(
                 prompt,
                 generation_config={
-                    'max_output_tokens': max_tokens,
+                    'max_output_tokens': 180,
                     'temperature': 0.7,
                     'top_p': 0.9,
                     'top_k': 40,
@@ -1937,8 +1937,8 @@ Return ONLY valid JSON with all the above keys. No explanations, no markdown for
         max_words_by_type = {
             'TITLE': 6,
             'SUBTITLE': 8,
-            'CONTENT_1': 150,
-            'CONTENT_2': 150,
+            'CONTENT_1': 20,
+            'CONTENT_2': 20,
             'BULLET_1': 40,
             'BULLET_2': 40,
             'BULLET_3': 40,
@@ -1962,14 +1962,14 @@ Return ONLY valid JSON with all the above keys. No explanations, no markdown for
             'property2': 3,
             'property3': 3,
             'projectOverview': 50,
-            'scope_desc': 40,
+            'scope_desc': 80,
             'project': 1,
             'overview': 1,
             'color1': 1,
             'color2': 1,
             'logo_1': 1,
-            'Heading_1': 5,
-            'Head1_para': 15,
+            'Heading_1': 6 ,
+            'Head1_para': 8,
             '"': 1,
             'u0022': 1,
             'Project Goal': 2,
@@ -1978,24 +1978,24 @@ Return ONLY valid JSON with all the above keys. No explanations, no markdown for
             'logo4': 1,
             'logo5': 1,
             'logo6': 1,
-            'Heading_2': 5,
-            'Heading_3': 5,
-            'Heading_4': 5,
-            'Heading_5': 5,
-            'Heading_6': 5,
-            'Head2_para': 15,
-            'Head3_para': 15,
-            'Head4_para': 15,
-            'Head5_para': 15,
-            'Head6_para': 15,
+            'Heading_2': 6,
+            'Heading_3': 6,
+            'Heading_4': 6,
+            'Heading_6': 6,
+            'Heading_6': 6,
+            'Head2_para': 8,
+            'Head3_para': 8,
+            'Head4_para': 8,
+            'Head5_para': 8,
+            'Head6_para': 8,
             'Project\nGoals': 2,
             'logo_2': 1,
             'logo_3': 1,
             'logo_4': 1,
             'logo_5': 1,
             'logo_6': 1,
-            'conclusion_para': 65,
-            'our_process_desc': 85,
+            'conclusion_para': 80,
+            'our_process_desc': 80,
         }
         
         max_words = max_words_by_type.get(placeholder_type, 15)
